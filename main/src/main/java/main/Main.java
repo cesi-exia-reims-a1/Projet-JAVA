@@ -26,7 +26,6 @@ public abstract class Main {
 		final View view = new View(model);
 		final Controller controller = new Controller(view, model);
 		view.setController(controller);
-		System.out.println("Eclipse Project Start");
 		controller.control();
 		controller.orderPerform(ControllerOrder.English);
 	}
