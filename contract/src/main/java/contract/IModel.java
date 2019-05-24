@@ -16,7 +16,7 @@ public interface IModel {
 	 *
 	 * @return the helloworld entity
 	 */
-	HelloWorld getHelloWorld();
+	void getMessage();
 
 	/**
 	 * Load the message.
@@ -24,7 +24,7 @@ public interface IModel {
 	 * @param code
 	 *          the code
 	 */
-	void loadHelloWorld(String code);
+	void loadMessage(String key);
 
 	/**
 	 * Gets the observable.
