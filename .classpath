@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="contract/src/main/java"/>
+	<classpathentry kind="src" path="controller/src/main/java"/>
+	<classpathentry kind="src" path="entity/src/main/java"/>
+	<classpathentry kind="src" path="main/src/main/java"/>
+	<classpathentry kind="src" path="model/src/main/java"/>
+	<classpathentry kind="src" path="model/src/test/java"/>
+	<classpathentry kind="src" path="view/src/main/java"/>
+	<classpathentry kind="output" path="contract/target/classes"/>
+</classpath>
