@@ -83,9 +83,8 @@ public final class Model extends Observable implements IModel {
 	}
 
 	@Override
-	public void getMessage() {
-		// TODO Auto-generated method stub
-
+	public String getMessage() {
+		return helloWorld.getMessage();
 	}
 
 	@Override

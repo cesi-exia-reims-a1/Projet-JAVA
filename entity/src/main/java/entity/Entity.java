@@ -13,6 +13,10 @@ public abstract class Entity {
 
 	private Permeability permeability;
 
+	public Entity() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Entity(final Sprite sprite, final Permeability permeability) {
 		this.setSprite(sprite);
 		this.setPermeability(permeability);

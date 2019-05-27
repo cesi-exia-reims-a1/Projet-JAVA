@@ -24,6 +24,7 @@ public class HelloWorld extends Entity {
 	 * @param message the message
 	 */
 	public HelloWorld(final int id, final String key, final String message) {
+		super();
 		this.setId(id);
 		this.setKey(key);
 		this.setMessage(message);

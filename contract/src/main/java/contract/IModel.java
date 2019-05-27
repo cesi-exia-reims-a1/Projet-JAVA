@@ -16,7 +16,7 @@ public interface IModel {
 	 *
 	 * @return the helloworld entity
 	 */
-	void getMessage();
+	String getMessage();
 
 	/**
 	 * Load the message.
