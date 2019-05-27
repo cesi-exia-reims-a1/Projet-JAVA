@@ -31,8 +31,6 @@
       </plugin>
     </plugins>
   </build>
-<<<<<<< HEAD
-=======
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -47,6 +45,5 @@
       </exclusions>
     </dependency>
   </dependencies>
->>>>>>> branch 'master' of https://github.com/cesi-exia-reims-a1/Projet-JAVA.git
 </project>
 

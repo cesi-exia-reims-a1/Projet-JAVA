@@ -4,10 +4,6 @@
  */
 package model;
 
-<<<<<<< HEAD
-public class ModelTest {
-
-=======
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -54,5 +50,4 @@ public class ModelTest {
         this.model.loadHelloWorld("ID");
         Assert.assertEquals("Salamat pagi dunia", this.model.getHelloWorld().getMessage());
     }
->>>>>>> branch 'master' of https://github.com/cesi-exia-reims-a1/Projet-JAVA.git
 }

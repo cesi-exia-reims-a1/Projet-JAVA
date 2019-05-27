@@ -1,14 +1,5 @@
 package view;
 
-<<<<<<< HEAD
-/**
- * The Class View.
- *
- * @author Jean-Aymeric Diet
- */
-public final class View {
-
-=======
 import java.awt.event.KeyEvent;
 
 import javax.swing.SwingUtilities;
@@ -88,5 +79,4 @@ public final class View implements IView, Runnable {
 	public void setController(final IController controller) {
 		this.viewFrame.setController(controller);
 	}
->>>>>>> branch 'master' of https://github.com/cesi-exia-reims-a1/Projet-JAVA.git
 }

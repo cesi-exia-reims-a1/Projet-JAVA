@@ -4,23 +4,6 @@
  */
 package main;
 
-<<<<<<< HEAD
-/**
- * The Class Main.
- *
- * @author Jean-Aymeric Diet
- */
-public abstract class Main {
-
-	/**
-	 * The main method.
-	 *
-	 * @param args the arguments
-	 */
-	public static void main(final String[] args) {
-
-	}
-=======
 import contract.ControllerOrder;
 import controller.Controller;
 import model.Model;
@@ -48,5 +31,4 @@ public abstract class Main {
         controller.control();
         controller.orderPerform(ControllerOrder.English);
     }
->>>>>>> branch 'master' of https://github.com/cesi-exia-reims-a1/Projet-JAVA.git
 }

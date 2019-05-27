@@ -1,14 +1,5 @@
 package view;
 
-<<<<<<< HEAD
-/**
- * The Class ViewPanel.
- *
- * @author Jean-Aymeric Diet
- */
-class ViewPanel {
-
-=======
 import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
@@ -76,5 +67,4 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
 		graphics.drawString(this.getViewFrame().getModel().getHelloWorld().getMessage(), 10, 20);
 	}
->>>>>>> branch 'master' of https://github.com/cesi-exia-reims-a1/Projet-JAVA.git
 }

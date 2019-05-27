@@ -1,14 +1,5 @@
 package view;
 
-<<<<<<< HEAD
-/**
- * The Class ViewFrame.
- *
- * @author Jean-Aymeric Diet
- */
-class ViewFrame {
-
-=======
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
@@ -180,5 +171,4 @@ class ViewFrame extends JFrame implements KeyListener {
 	public void keyReleased(final KeyEvent e) {
 
 	}
->>>>>>> branch 'master' of https://github.com/cesi-exia-reims-a1/Projet-JAVA.git
 }
