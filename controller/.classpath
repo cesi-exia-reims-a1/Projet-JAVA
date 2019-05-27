@@ -35,6 +35,9 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="src" path="/model"/>
+=======
+>>>>>>> branch 'master' of https://github.com/cesi-exia-reims-a1/Projet-JAVA.git
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
