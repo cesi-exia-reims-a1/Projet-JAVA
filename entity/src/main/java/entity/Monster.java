@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Monster extends Mobile {
 
-	private static final Sprite sprite = new Sprite('M', "Monster.png");
+	private static final Sprite sprite = new Sprite('7', "Monster.png");
 
     public Monster(final int x, final int y, final IMap map) throws IOException {
         super(x, y, sprite, map, Permeability.BLOCKING);

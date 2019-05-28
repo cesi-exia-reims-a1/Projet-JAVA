@@ -5,16 +5,16 @@ import java.io.IOException;
 
 public class Person extends Mobile{
 	
-	private static final Sprite sprite         = new Sprite('P', "Person.png");
+	private static final Sprite sprite         = new Sprite('4', "Person.png");
 
     /** The Constant spriteTurnLeft. */
-    private static final Sprite spriteLeft  = new Sprite('P', "PersonLeft.png");
+    private static final Sprite spriteLeft  = new Sprite('4', "PersonLeft.png");
 
     /** The Constant spriteTurnRight. */
-    private static final Sprite spriteUp = new Sprite('P', "PersonUp.png");
+    private static final Sprite spriteUp = new Sprite('4', "PersonUp.png");
 
     /** The Constant spriteExplode. */
-    private static final Sprite spriteDown   = new Sprite('P', "PersonDown.png");
+    private static final Sprite spriteDown   = new Sprite('4', "PersonDown.png");
 
     public Person(final int x, final int y, final IMap map) throws IOException {
         super(x, y, sprite, map, Permeability.BLOCKING);
