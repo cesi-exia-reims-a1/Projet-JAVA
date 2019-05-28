@@ -2,9 +2,10 @@ package entity;
 
 public class Escape extends MotionLess {
 
-	public Escape(Sprite sprite, Permeability permeability) {
-		super(sprite, permeability);
+	private static final Sprite SPRITE = new Sprite('E', "escape.jpg");
+	
+	Escape() {
+		super(SPRITE, Permeability.PENETRABLE);
 		// TODO Auto-generated constructor stub
 	}
-
 }
