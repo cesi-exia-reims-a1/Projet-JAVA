@@ -80,7 +80,7 @@ public final class Controller implements IController {
 			this.model.loadHelloWorld("D");
 			break;
 		case LEFT:
-			this.model.loadHelloWorld("G");
+			this.model.loadHelloWorld("Q");
 			break;
 		case Nothing:
 		default:
