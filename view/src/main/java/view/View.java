@@ -8,6 +8,7 @@ import contract.ControllerOrder;
 import contract.IController;
 import contract.IModel;
 import contract.IView;
+import entity.Map;
 
 public final class View implements IView, Runnable {
 
@@ -33,15 +34,22 @@ public final class View implements IView, Runnable {
 		}
 	}
 
+	@Override
 	public void printMessage(final String message) {
 		this.viewFrame.printMessage(message);
 	}
 
+	@Override
 	public void run() {
 		this.viewFrame.setVisible(true);
 	}
 
 	public void setController(final IController controller) {
 		this.viewFrame.setController(controller);
+	}
+
+	@Override
+	public void afficheCarte(Map map) {
+		this.viewFrame.afficheCarte(map);
 	}
 }

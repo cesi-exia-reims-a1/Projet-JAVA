@@ -1,11 +1,10 @@
 package entity;
 
-
-public class Ground extends MotionLess{
+public class Ground extends MotionLess implements IElement {
 
 	private static final Sprite SPRITE = new Sprite('2', "ground.jpg");
-	
-	Ground() {
+
+	public Ground() {
 		super(SPRITE, Permeability.PENETRABLE);
 	}
 

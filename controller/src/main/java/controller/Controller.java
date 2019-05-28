@@ -35,9 +35,12 @@ public final class Controller implements IController {
 	 *
 	 * @see contract.IController#control()
 	 */
+	@Override
 	public void control() {
-		this.view.printMessage(
-				"Appuyer sur les touches 'Z','Q','S','D' pour vous diriges vers le haut, gauche, bas, droite pour mouvoir votre personnage");
+		// this.view.printMessage(
+		// "Appuyer sur les touches 'Z','Q','S','D' pour vous diriges vers le haut,
+		// gauche, bas, droite pour mouvoir votre personnage");
+		this.view.afficheCarte(model.getMap());
 	}
 
 	/**
@@ -68,6 +71,7 @@ public final class Controller implements IController {
 	 *
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
+	@Override
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 		case UP:

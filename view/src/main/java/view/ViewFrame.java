@@ -10,12 +10,14 @@ import javax.swing.JOptionPane;
 
 import contract.IController;
 import contract.IModel;
+import entity.Map;
 
 class ViewFrame extends JFrame implements KeyListener {
 
 	private IModel model;
 	private IController controller;
 	private static final long serialVersionUID = -697358409737458175L;
+	private ViewPanel contentPane;
 
 	public ViewFrame(final IModel model) throws HeadlessException {
 		this.buildViewFrame(model);
@@ -57,7 +59,8 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.addKeyListener(this);
-		this.setContentPane(new ViewPanel(this));
+		contentPane = new ViewPanel(this);
+		this.setContentPane(contentPane);
 		this.setSize(1200 + this.getInsets().left + this.getInsets().right,
 				700 + this.getInsets().top + this.getInsets().bottom);
 		this.setLocationRelativeTo(null);
@@ -68,15 +71,22 @@ class ViewFrame extends JFrame implements KeyListener {
 		JOptionPane.showMessageDialog(null, message);
 	}
 
+	@Override
 	public void keyTyped(final KeyEvent e) {
 
 	}
 
+	@Override
 	public void keyPressed(final KeyEvent e) {
 		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
 	}
 
+	@Override
 	public void keyReleased(final KeyEvent e) {
 
+	}
+
+	public void afficheCarte(Map map) {
+		this.contentPane.afficheCarte(map);
 	}
 }
