@@ -3,7 +3,7 @@ package entity;
 import java.awt.Image;
 import java.util.Observable;
 
-public interface IEntity {
+public interface IElement {
 
     Sprite getSprite();
 

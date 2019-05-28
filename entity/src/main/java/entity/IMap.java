@@ -9,7 +9,7 @@ public interface IMap {
 
     int getHeight();
 
-    IEntity getOnTheMapXY(int x, int y);
+    IElement getOnTheMapXY(int x, int y);
 
     /**
      * Sets the mobile has changed.

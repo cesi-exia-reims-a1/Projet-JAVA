@@ -13,7 +13,7 @@ public class Map extends Observable implements IMap{
 
     private int          height;
 
-    private IEntity[][] onTheMap;
+    private IElement[][] onTheMap;
 
 	private MotionLessEntityFactory MotionlessEntityFactory;
 
@@ -30,7 +30,7 @@ public class Map extends Observable implements IMap{
         this.setWidth(Integer.parseInt(line));
         line = buffer.readLine();
         this.setHeight(Integer.parseInt(line));
-        this.onTheMap = new IEntity[this.getWidth()][this.getHeight()];
+        this.onTheMap = new IElement[this.getWidth()][this.getHeight()];
         line = buffer.readLine();
         while (line != null) {
             for (int x = 0; x < line.toCharArray().length; x++) {
@@ -59,13 +59,13 @@ public class Map extends Observable implements IMap{
     }
 
 
-    public final IEntity getOnMapXY(final int x, final int y) {
+    public final IElement getOnMapXY(final int x, final int y) {
         return this.onTheMap[x][y];
     }
 
 
     private void setOnTheMapXY(final MotionLess motionLess, final int x, final int y) {
-        this.onTheMap[x][y] = (IEntity) motionLess;
+        this.onTheMap[x][y] = (IElement) motionLess;
     }
 
 
@@ -79,7 +79,7 @@ public class Map extends Observable implements IMap{
     }
 
 	@Override
-	public IEntity getOnTheMapXY(int x, int y) {
+	public IElement getOnTheMapXY(int x, int y) {
         return this.onTheMap[x][y];
 	}
 }
