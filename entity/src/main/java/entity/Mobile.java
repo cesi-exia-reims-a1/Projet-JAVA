@@ -1,11 +1,11 @@
 package entity;
 
 import java.awt.Point;
-import entity.Entity;
+import entity.Element;
 import entity.Permeability;
 import entity.Sprite;
 
-public abstract class Mobile extends Entity implements IMobile {
+public abstract class Mobile extends Element implements IMobile {
 
 	private Boolean alive = true;
 	
