@@ -13,5 +13,7 @@ public enum ControllerOrder {
 
 	RIGHT,
 
-	LEFT
+	LEFT, 
+	
+	Nothing
 }
