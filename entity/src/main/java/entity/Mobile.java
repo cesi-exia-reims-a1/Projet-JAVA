@@ -4,6 +4,7 @@ import java.awt.Point;
 import entity.Element;
 import entity.Permeability;
 import entity.Sprite;
+import contract.IBoard;
 
 public abstract class Mobile extends Element implements IMobile {
 
@@ -12,6 +13,8 @@ public abstract class Mobile extends Element implements IMobile {
 	private Map map;
 	
 	private Point position;
+	
+	private IBoard board;
 	
 	public Mobile(Sprite sprite, IMap map2, Permeability permeability) {
 		super(sprite, permeability);
@@ -100,7 +103,9 @@ public abstract class Mobile extends Element implements IMobile {
         this.position = position;
     }
 	
-	
+	protected IBoard getBoard() {
+        return this.board;
+    }
 	
 	
 }
