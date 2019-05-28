@@ -52,7 +52,7 @@ public abstract class Mobile extends Entity implements IMobile {
     }
 
 	public void moveUp() {
-        this.setY(this.getY() - 1);
+        this.setY(this.getY() + 1);
         this.setHasMoved();
     }
 	
@@ -62,7 +62,7 @@ public abstract class Mobile extends Entity implements IMobile {
     }
 	
 	public void moveDown() {
-        this.setY(this.getY() + 1);
+        this.setY(this.getY() - 1);
         this.setHasMoved();
     }
 	

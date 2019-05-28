@@ -1,10 +1,16 @@
 package entity;
 
-/*public class Rock extends Mobile{
+import java.io.IOException;
 
-	public Rock(Sprite sprite, Permeability permeability) {
-		super(sprite, permeability);
-		// TODO Auto-generated constructor stub
+public class Rock extends Mobile{
+	
+	private static final Sprite sprite = new Sprite('R', "Rock.png");
+
+	public Rock(final int x, final int y, final IMap map) throws IOException {
+        super(x, y, sprite, map, Permeability.BLOCKING);
 	}
 
-}*/
+	public final void moveDown() {
+        super.moveDown();
+	}
+}
