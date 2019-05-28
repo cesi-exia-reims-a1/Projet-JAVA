@@ -62,9 +62,10 @@ public class Map extends Observable implements IMap {
 		this.height = height;
 	}
 
-	public final IElement getOnMapXY(final int x, final int y) {
-		return this.onTheMap[x][y];
-	}
+	/*
+	 * public final IElement getOnMapXY(final int x, final int y) { return
+	 * this.onTheMap[x][y]; }
+	 */
 
 	private void setOnTheMapXY(final MotionLess motionLess, final int x, final int y) {
 		this.onTheMap[x][y] = (IElement) motionLess;
