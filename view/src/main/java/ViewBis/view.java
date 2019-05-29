@@ -20,7 +20,7 @@ public class view extends JPanel {
 	private BufferedImage image3;
 	private BufferedImage image4;
 	private BufferedImage image5;
-	int[][] cases = new int[4][6];
+	char[][] cases = new char[4][6];
 
 	public view() {
 		try {
@@ -35,30 +35,30 @@ public class view extends JPanel {
 			ex.printStackTrace();
 		}
 
-		cases[0][0] = 4;
-		cases[0][1] = 4;
-		cases[0][2] = 4;
-		cases[0][3] = 4;
-		cases[0][4] = 4;
-		cases[0][5] = 4;
-		cases[1][0] = 4;
-		cases[1][1] = 0;
-		cases[1][2] = 1;
-		cases[1][3] = 1;
-		cases[1][4] = 2;
-		cases[1][5] = 4;
-		cases[2][0] = 4;
-		cases[2][1] = 5;
-		cases[2][2] = 1;
-		cases[2][3] = 1;
-		cases[2][4] = 1;
-		cases[2][5] = 4;
-		cases[3][0] = 4;
-		cases[3][1] = 4;
-		cases[3][2] = 4;
-		cases[3][3] = 4;
-		cases[3][4] = 4;
-		cases[3][5] = 4;
+		cases[0][0] = 'W';
+		cases[0][1] = 'W';
+		cases[0][2] = 'W';
+		cases[0][3] = 'W';
+		cases[0][4] = 'W';
+		cases[0][5] = 'W';
+		cases[1][0] = 'W';
+		cases[1][1] = 'P';
+		cases[1][2] = 'G';
+		cases[1][3] = 'G';
+		cases[1][4] = 'E';
+		cases[1][5] = 'W';
+		cases[2][0] = 'W';
+		cases[2][1] = 'D';
+		cases[2][2] = 'G';
+		cases[2][3] = 'G';
+		cases[2][4] = 'G';
+		cases[2][5] = 'W';
+		cases[3][0] = 'W';
+		cases[3][1] = 'W';
+		cases[3][2] = 'W';
+		cases[3][3] = 'W';
+		cases[3][4] = 'W';
+		cases[3][5] = 'W';
 
 	}
 
@@ -72,15 +72,15 @@ public class view extends JPanel {
 				// System.out.println(dx1 + "," + dy1);
 
 				Image monImageADraw = image;
-				if (cases[y][x] == 1)
+				if (cases[y][x] == 'G')
 					monImageADraw = image1;
-				if (cases[y][x] == 2)
+				if (cases[y][x] == 'E')
 					monImageADraw = image2;
-				if (cases[y][x] == 3)
+				if (cases[y][x] == 'U')
 					monImageADraw = image3;
-				if (cases[y][x] == 4)
+				if (cases[y][x] == 'W')
 					monImageADraw = image4;
-				if (cases[y][x] == 5)
+				if (cases[y][x] == 'D')
 					monImageADraw = image5;
 				g.drawImage(monImageADraw, dx1, dy1, 50 + 50 * x, 50 + 50 * y, 0, 0, monImageADraw.getWidth(this),
 						monImageADraw.getHeight(this), this);
@@ -92,32 +92,62 @@ public class view extends JPanel {
 		// parameters
 	}
 
-	protected void touche() {
-		cases[0][0] = 4;
-		cases[0][1] = 4;
-		cases[0][2] = 4;
-		cases[0][3] = 4;
-		cases[0][4] = 4;
-		cases[0][5] = 4;
-		cases[1][0] = 4;
-		cases[1][1] = 3;
-		cases[1][2] = 1;
-		cases[1][3] = 1;
-		cases[1][4] = 2;
-		cases[1][5] = 4;
-		cases[2][0] = 4;
-		cases[2][1] = 0;
-		cases[2][2] = 1;
-		cases[2][3] = 1;
-		cases[2][4] = 1;
-		cases[2][5] = 4;
-		cases[3][0] = 4;
-		cases[3][1] = 4;
-		cases[3][2] = 4;
-		cases[3][3] = 4;
-		cases[3][4] = 4;
-		cases[3][5] = 4;
+	protected void moveRight() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 'P') {
+					if (cases[y][x+1] == 'G'|| cases[y][x+1] == 'U' || cases[y][x+1] == 'E' || cases[y][x+1] == 'D' ){
+							cases[y][x] = 'U';
+							cases[y][x+1] = 'P';
+							break;
+					}
+				}
+			}
+		}
 		repaint();
 	}
+	
+	protected void moveLeft() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 'P') {
+					if (cases[y][x-1] == 'G' || cases[y][x-1] == 'U' || cases[y][x-1] == 'D' || cases[y][x-1] == 'E' ){
+							cases[y][x] = 'U';
+							cases[y][x-1] = 'P';
+					}
+				}
+			}
+		}
+		repaint();
+	}
+	
+	protected void moveUp() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 'P') {
+					if (cases[y-1][x] == 'E' || cases[y-1][x] == 'U' || cases[y-1][x] == 'D' || cases[y-1][x] == 'G'){
+							cases[y][x] = 'U';
+							cases[y-1][x] = 'P';
+					}
+				}
+			}
+		}
+		repaint();
+	}
+	
+	protected void moveDown() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 'P') {
+					if (cases[y+1][x] == 'G' || cases[y+1][x] == 'U' || cases[y+1][x] == 'D' || cases[y+1][x] == 'E'){
+							cases[y][x] = 'U';
+							cases[y+1][x] = 'P';
+					}
+				}
+			}
+		}
+		repaint();
+	}
+
 
 }

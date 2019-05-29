@@ -18,16 +18,50 @@ public class TestViewBis {
 
             @Override
             public void keyTyped(KeyEvent e) {
-                compo.touche();
+            	if(e.getKeyCode() == KeyEvent.VK_D) {
+					compo.moveRight();
+				}
+				if(e.getKeyCode() == KeyEvent.VK_Q) {
+					compo.moveLeft();
+				}
+				if(e.getKeyCode() == KeyEvent.VK_Z) {
+					compo.moveUp();
+				}
+				if(e.getKeyCode() == KeyEvent.VK_S) {
+					compo.moveDown();
+				}
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
+            	if(e.getKeyCode() == KeyEvent.VK_D) {
+					compo.moveRight();
+				}
+				if(e.getKeyCode() == KeyEvent.VK_Q) {
+					compo.moveLeft();
+				}
+				if(e.getKeyCode() == KeyEvent.VK_Z) {
+					compo.moveUp();
+				}
+				if(e.getKeyCode() == KeyEvent.VK_S) {
+					compo.moveDown();
+				}
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                // TODO Auto-generated method stub
+            	/*if(e.getKeyCode() == KeyEvent.VK_D) {
+					compo.moveRight();
+				}
+				if(e.getKeyCode() == KeyEvent.VK_Q) {
+					compo.moveLeft();
+				}
+				if(e.getKeyCode() == KeyEvent.VK_Z) {
+					compo.moveUp();
+				}
+				if(e.getKeyCode() == KeyEvent.VK_S) {
+					compo.moveDown();
+				}*/
 
             }
         });
