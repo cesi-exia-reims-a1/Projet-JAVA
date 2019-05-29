@@ -68,14 +68,14 @@ public class controller extends JPanel {
 	}
 	
 	protected void moveUp() {
-		cases[1][1] = 1;
-		cases[0][0] = 0;
+		cases[1][1] = 0;
+		cases[0][0] = 1;
 		repaint();
 	}
 	
 	protected void moveDown() {
-		cases[0][0] = 1;
-		cases[1][1] = 0;
+		cases[0][0] = 0;
+		cases[1][1] = 1;
 		repaint();
 	}
 
