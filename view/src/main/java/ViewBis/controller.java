@@ -1,4 +1,4 @@
-package ControllerBis;
+package ViewBis;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -16,7 +16,7 @@ public class controller extends JPanel {
 
 	private BufferedImage image;
 	private BufferedImage image1;
-	int[][] cases = new int[2][2];
+	char[][] cases = new char[2][2];
 
 	public controller() {
 		try {
@@ -26,10 +26,10 @@ public class controller extends JPanel {
 			ex.printStackTrace();
 		}
 
-		cases[0][0] = 1;
-		cases[0][1] = 0;
-		cases[1][0] = 0;
-		cases[1][1] = 0;
+		cases[0][0] = 'P';
+		cases[0][1] = 'G';
+		cases[1][0] = 'G';
+		cases[1][1] = 'G';
 
 	}
 
@@ -43,7 +43,7 @@ public class controller extends JPanel {
 				// System.out.println(dx1 + "," + dy1);
 
 				Image monImageADraw = image;
-				if (cases[y][x] == 1)
+				if (cases[y][x] == 'P')
 					monImageADraw = image1;
 				g.drawImage(monImageADraw, dx1, dy1, 50 + 50 * x, 50 + 50 * y, 0, 0, monImageADraw.getWidth(this),
 						monImageADraw.getHeight(this), this);
@@ -56,27 +56,59 @@ public class controller extends JPanel {
 	}
 
 	protected void moveRight() {
-		cases[0][1] = 1;
-		cases[0][0] = 0;
-		repaint();
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 'P') {
+					if (cases[y][x+1] == 'G'){
+							cases[y][x] = 'U';
+							cases[y][x+1] = 'P';
+					}
+				}
+				repaint();
+			}
+		}
 	}
 	
 	protected void moveLeft() {
-		cases[0][0] = 1;
-		cases[0][1] = 0;
-		repaint();
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 'P') {
+					if (cases[y][x-1] == 'G'){
+							cases[y][x] = 'U';
+							cases[y][x-1] = 'P';
+					}
+				}
+				repaint();
+			}
+		}
 	}
 	
 	protected void moveUp() {
-		cases[1][1] = 0;
-		cases[0][0] = 1;
-		repaint();
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 'P') {
+					if (cases[y+1][x] == 'G'){
+							cases[y][x] = 'U';
+							cases[y+1][x] = 'P';
+					}
+				}
+				repaint();
+			}
+		}
 	}
 	
 	protected void moveDown() {
-		cases[0][0] = 0;
-		cases[1][1] = 1;
-		repaint();
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 'P') {
+					if (cases[y-1][x] == 'G'){
+							cases[y][x] = 'U';
+							cases[y-1][x] = 'P';
+					}
+				}
+				repaint();
+			}
+		}
 	}
 
 	public static void main(String[] args) {
