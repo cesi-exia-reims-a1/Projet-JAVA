@@ -55,7 +55,12 @@ public class view extends JPanel {
 		// parameters
 	}
 
-	protected void touche() {
+	protected void Right() {
+		cases[0][1] = 1;
+		cases[0][0] = 0;
+		repaint();
+	}
+	protected void Left() {
 		cases[0][1] = 1;
 		cases[0][0] = 0;
 		repaint();
@@ -71,19 +76,20 @@ public class view extends JPanel {
 		fenetre.addKeyListener(new KeyListener() {
 
 			@Override
-			public void keyTyped(KeyEvent e) {
-				compo.touche();
+			public void keyTyped(KeyEvent D) {
+				compo.Right();
 			}
 
 			@Override
-			public void keyReleased(KeyEvent e) {
+			public void keyReleased(KeyEvent D ) {
 			}
 
 			@Override
-			public void keyPressed(KeyEvent e) {
+			public void keyPressed(KeyEvent D) {
 				// TODO Auto-generated method stub
 
 			}
+		
 		});
 
 		fenetre.setVisible(true);
