@@ -92,7 +92,10 @@ public class view extends JPanel {
 		// g.drawImage(image1, 50, 0, this); // see javadoc for more info on the
 		// parameters
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> branch 'master' of https://github.com/cesi-exia-reims-a1/Projet-JAVA.git
 	protected void moveRight() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
