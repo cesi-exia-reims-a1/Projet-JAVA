@@ -1,5 +1,6 @@
 package ViewBis;
 
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -91,12 +92,12 @@ public class view extends JPanel {
 		// g.drawImage(image1, 50, 0, this); // see javadoc for more info on the
 		// parameters
 	}
-
+	
 	protected void moveRight() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == 'P') {
-					if (cases[y][x+1] == 'G'|| cases[y][x+1] == 'U' || cases[y][x+1] == 'E' || cases[y][x+1] == 'D' ){
+					if (cases[y][x+1] == 'G'|| cases[y][x+1] == 'U' || cases[y][x+1] == 'D' || cases[y][x+1] == 'E'){
 							cases[y][x] = 'U';
 							cases[y][x+1] = 'P';
 							break;
