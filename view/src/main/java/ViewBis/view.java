@@ -94,6 +94,10 @@ public class view extends JPanel {
 					monImageADraw = image4;
 				if (cases[y][x] == 5)
 					monImageADraw = image5;
+				if (cases[y][x] == 6)
+					monImageADraw = image6;
+				if (cases[y][x] == 7)
+					monImageADraw = image7;
 				g.drawImage(monImageADraw, dx1, dy1, 50 + 50 * x, 50 + 50 * y, 0, 0, monImageADraw.getWidth(this),
 						monImageADraw.getHeight(this), this);
 			}
