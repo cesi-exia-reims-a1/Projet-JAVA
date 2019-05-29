@@ -54,7 +54,7 @@ public class view extends JPanel {
 			// Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("Driver O.K.");
 
-			String url = "jdbc:mysql://localhost:3306/jpublankproject?serverTimezone=UTC";
+			String url = "jdbc:mysql://localhost:3306/projet_java?serverTimezone=UTC";
 			String user = "root";
 			String passwd = "";
 
@@ -70,9 +70,8 @@ public class view extends JPanel {
 				// rs.getInt("id"));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
-
 
 	}
 
@@ -108,68 +107,27 @@ public class view extends JPanel {
 	}
 
 	protected void moveRight() {
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 4) {
-					if (cases[y][x + 1] == 2 || cases[y][x + 1] == 3) {
-						cases[y][x] = 3;
-						cases[y][x + 1] = 4;
-						break;
-					}
-					if (cases[y][x + 1] == 8) {
-						cases[y][x] = 3;
-						cases[y][x + 1] = 4;
-						System.out.println("VICTOIRE");
 
-					}
-				}
-			}
-		}
+		Point positionJoueur = findPlayer();
+		appliqueMovement(positionJoueur.x, positionJoueur.y, positionJoueur.x + 1, positionJoueur.y);
 
-		repaint();
 	}
 
 	protected void moveLeft() {
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 4) {
-					if (cases[y][x - 1] == 2 || cases[y][x - 1] == 3) {
-						cases[y][x] = 3;
-						cases[y][x - 1] = 4;
-					}
-					if (cases[y][x - 1] == 8) {
-						cases[y][x] = 3;
-						cases[y][x - 1] = 4;
-						System.out.println("VICTOIRE");
-					}
-				}
-			}
-		}
-		repaint();
+		Point positionJoueur = findPlayer();
+		appliqueMovement(positionJoueur.x, positionJoueur.y, positionJoueur.x - 1, positionJoueur.y);
+
 	}
 
 	protected void moveUp() {
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 4) {
-					if (cases[y - 1][x] == 3 || cases[y - 1][x] == 2) {
-						cases[y][x] = 3;
-						cases[y - 1][x] = 4;
-					}
-					if (cases[y - 1][x] == 8) {
-						cases[y][x] = 3;
-						cases[y - 1][x] = 4;
-						System.out.println("VICTOIRE");
-					}
-				}
-			}
-		}
-		repaint();
+		Point positionJoueur = findPlayer();
+		appliqueMovement(positionJoueur.x, positionJoueur.y, positionJoueur.x, positionJoueur.y - 1);
+
 	}
 
 	protected void moveDown() {
 		Point positionJoueur = findPlayer();
-		appliqueMovement(positionJoueur.x, positionJoueur.y, positionJoueur.x, positionJoueur.y+ 1);
+		appliqueMovement(positionJoueur.x, positionJoueur.y, positionJoueur.x, positionJoueur.y + 1);
 
 	}
 
@@ -183,7 +141,6 @@ public class view extends JPanel {
 		}
 		throw new RuntimeException("impossible");
 	}
-
 
 	protected void appliqueMovement(int x1, int y1, int x2, int y2) {
 		if (cases[y2][x2] == GROUND || cases[y2][x2] == UNDERGROUND) {
@@ -202,23 +159,5 @@ public class view extends JPanel {
 			System.out.println("DIAMANT " + nbDiamant);
 		}
 		repaint();
-	}
-
-	protected void moveOnDiamond() {
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 4) {
-					if (cases[y + 1][x] == 5 || cases[y - 1][x] == 5 || cases[y][x - 1] == 5 || cases[y][x + 1] == 5) {
-						int d = 1;
-						cases[y][x] = 3;
-						// cases[y + 1][x] = 4 || cases[y - 1][x] == 4 || cases[y][x - 1] == 4 ||
-						// cases[y][x + 1] == 4;
-						System.out.println("Vous avez" + d + "diamands");
-						d++;
-					}
-
-				}
-			}
-		}
 	}
 }
