@@ -6,6 +6,10 @@ import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -28,7 +32,7 @@ public class view extends JPanel {
 	private BufferedImage image7;
 	private BufferedImage imageWin;
 	int nbDiamant = 0;
-	int[][] cases = new int[4][6];
+	int[][] cases = new int[20][20];
 
 	public view() {
 		try {
@@ -45,31 +49,30 @@ public class view extends JPanel {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
+		try {
 
-		cases[0][0] = 1;
-		cases[0][1] = 1;
-		cases[0][2] = 1;
-		cases[0][3] = 1;
-		cases[0][4] = 1;
-		cases[0][5] = 1;
-		cases[1][0] = 1;
-		cases[1][1] = 4;
-		cases[1][2] = 2;
-		cases[1][3] = 6;
-		cases[1][4] = 8;
-		cases[1][5] = 1;
-		cases[2][0] = 1;
-		cases[2][1] = 5;
-		cases[2][2] = 2;
-		cases[2][3] = 2;
-		cases[2][4] = 2;
-		cases[2][5] = 1;
-		cases[3][0] = 1;
-		cases[3][1] = 1;
-		cases[3][2] = 1;
-		cases[3][3] = 1;
-		cases[3][4] = 1;
-		cases[3][5] = 1;
+			// Class.forName("com.mysql.jdbc.Driver");
+			System.out.println("Driver O.K.");
+
+			String url = "jdbc:mysql://localhost:3306/jpublankproject?serverTimezone=UTC";
+			String user = "root";
+			String passwd = "";
+
+			Connection conn = DriverManager.getConnection(url, user, passwd);
+			System.out.println("Connexion effective !");
+
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM map1");
+
+			while (rs.next()) {
+				cases[rs.getInt("x")][rs.getInt("y")] = rs.getInt("id");
+				// System.out.println(rs.getInt("x") + " " + rs.getInt("y") + " " +
+				// rs.getInt("id"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 
 	}
 

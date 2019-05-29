@@ -17,6 +17,10 @@
   		<groupId>jpublankproject</groupId>
   		<artifactId>entity</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
+  	</dependency><dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.16</version>
+</dependency>
   </dependencies>
 </project>
