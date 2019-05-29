@@ -39,8 +39,8 @@ public class view extends JPanel {
 			image3 = ImageIO.read(new File("underground.png"));
 			image4 = ImageIO.read(new File("wall.png"));
 			image5 = ImageIO.read(new File("diamond.png"));
-			image6 = ImageIO.read(new File("Rock.png"));
-			image7 = ImageIO.read(new File("Monster.png"));
+			image6 = ImageIO.read(new File("cailloux.png"));
+			image7 = ImageIO.read(new File("monstre.png"));
 			imageWin = ImageIO.read(new File("victoire.png"));
 
 		} catch (IOException ex) {
@@ -56,7 +56,7 @@ public class view extends JPanel {
 		cases[1][0] = 1;
 		cases[1][1] = 4;
 		cases[1][2] = 2;
-		cases[1][3] = 2;
+		cases[1][3] = 6;
 		cases[1][4] = 8;
 		cases[1][5] = 1;
 		cases[2][0] = 1;
