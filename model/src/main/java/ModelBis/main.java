@@ -2,9 +2,11 @@ package ModelBis;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class main {
-	
+
 	public static void main(String[] args) {
 		try {
 
@@ -18,9 +20,15 @@ public class main {
 			Connection conn = DriverManager.getConnection(url, user, passwd);
 			System.out.println("Connexion effective !");
 
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM map1");
+
+			while (rs.next()) {
+				System.out.println(rs.getInt("x") + " " + rs.getInt("y") + " " + rs.getInt("id"));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 }
