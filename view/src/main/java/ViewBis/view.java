@@ -25,7 +25,10 @@ public class view extends JPanel {
 	private BufferedImage image3;
 	private BufferedImage image4;
 	private BufferedImage image5;
+	private BufferedImage image6;
+	private BufferedImage image7;
 	private BufferedImage imageWin;
+	
 	int[][] cases = new int[4][6];
 
 	public view() {
@@ -36,6 +39,8 @@ public class view extends JPanel {
 			image3 = ImageIO.read(new File("underground.png"));
 			image4 = ImageIO.read(new File("wall.png"));
 			image5 = ImageIO.read(new File("diamond.png"));
+			image6 = ImageIO.read(new File("Rock.png"));
+			image7 = ImageIO.read(new File("Monster.png"));
 			imageWin = ImageIO.read(new File("victoire.png"));
 
 		} catch (IOException ex) {
@@ -176,24 +181,22 @@ public class view extends JPanel {
 		repaint();
 		}
 	
-	protected void moveOnDiamond() {
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 4) {
-					if (cases[y + 1][x] == 5 || cases[y-1][x] == 5 || cases[y][x - 1] == 5 || cases[y][x + 1] == 5){
-						int d = 1;
-						cases[y][x] = 3;
-						cases[y + 1][x] = 4;
-						System.out.println("Vous avez" +d+ "diamands");
-						d++;
-					}
-				
-				}
+protected void moveOnDiamond() {
+for (int y = 0; y < cases.length; y++) {
+	for (int x = 0; x < cases[y].length; x++) {
+		if (cases[y][x] == 4) {
+			if (cases[y + 1][x] == 5 || cases[y-1][x] == 5 || cases[y][x - 1] == 5 || cases[y][x + 1] == 5){
+				int d = 1;
+				cases[y][x] = 3;
+				cases[y + 1][x] = 4;
+				System.out.println("Vous avez" +d+ "diamands");
+				d++;
 			}
+		
 		}
 	}
 }
-
+}}
 
 
 
