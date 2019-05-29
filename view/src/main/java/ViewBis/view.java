@@ -54,7 +54,7 @@ public class view extends JPanel {
 			// Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("Driver O.K.");
 
-			String url = "jdbc:mysql://localhost:3306/projet_java?serverTimezone=UTC";
+			String url = "jdbc:mysql://localhost:3306/jpublankproject?serverTimezone=UTC";
 			String user = "root";
 			String passwd = "";
 
