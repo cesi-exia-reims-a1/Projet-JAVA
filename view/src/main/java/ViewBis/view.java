@@ -1,24 +1,23 @@
 package ViewBis;
 
-import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class view extends JPanel {
 
+	private static final int WALL = 1;
+	private static final int GROUND = 2;
+	private static final int UNDERGROUND = 3;
+	private static final int DIAMOND = 5;
+	private static final int PLAYER = 4;
+	private static final int ESCAPE = 8;
 	private BufferedImage image;
 	private BufferedImage image1;
 	private BufferedImage image2;
@@ -28,7 +27,7 @@ public class view extends JPanel {
 	private BufferedImage image6;
 	private BufferedImage image7;
 	private BufferedImage imageWin;
-	
+	int nbDiamant = 0;
 	int[][] cases = new int[4][6];
 
 	public view() {
@@ -109,7 +108,7 @@ public class view extends JPanel {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == 4) {
-					if (cases[y][x + 1] == 2 || cases[y][x + 1] == 3 ) {
+					if (cases[y][x + 1] == 2 || cases[y][x + 1] == 3) {
 						cases[y][x] = 3;
 						cases[y][x + 1] = 4;
 						break;
@@ -118,12 +117,12 @@ public class view extends JPanel {
 						cases[y][x] = 3;
 						cases[y][x + 1] = 4;
 						System.out.println("VICTOIRE");
-					
-						}
+
 					}
 				}
 			}
-		
+		}
+
 		repaint();
 	}
 
@@ -131,7 +130,7 @@ public class view extends JPanel {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == 4) {
-					if (cases[y][x - 1] == 2 || cases[y][x - 1] == 3 ) {
+					if (cases[y][x - 1] == 2 || cases[y][x - 1] == 3) {
 						cases[y][x] = 3;
 						cases[y][x - 1] = 4;
 					}
@@ -145,7 +144,6 @@ public class view extends JPanel {
 		}
 		repaint();
 	}
-
 
 	protected void moveUp() {
 		for (int y = 0; y < cases.length; y++) {
@@ -167,52 +165,57 @@ public class view extends JPanel {
 	}
 
 	protected void moveDown() {
+		Point positionJoueur = findPlayer();
+		appliqueMovement(positionJoueur.x, positionJoueur.y, positionJoueur.x, positionJoueur.y+ 1);
+
+	}
+
+	protected Point findPlayer() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 4) {
-					if (cases[y + 1][x] == 2 || cases[y + 1][x] == 3) {
-						cases[y][x] = 3;
-						cases[y + 1][x] = 4;
-					}
-					if (cases[y + 1][x] == 8) {
-						cases[y][x] = 3;
-						cases[y + 1][x] = 4;
-						System.out.println("VICTOIRE");
-					}
+				if (cases[y][x] == PLAYER) {
+					return new Point(x, y);
 				}
 			}
 		}
-		repaint();
+		throw new RuntimeException("impossible");
+	}
+
+
+	protected void appliqueMovement(int x1, int y1, int x2, int y2) {
+		if (cases[y2][x2] == GROUND || cases[y2][x2] == UNDERGROUND) {
+			cases[y1][x1] = UNDERGROUND;
+			cases[y2][x2] = PLAYER;
 		}
-	
-protected void moveOnDiamond() {
-for (int y = 0; y < cases.length; y++) {
-	for (int x = 0; x < cases[y].length; x++) {
-		if (cases[y][x] == 4) {
-			if (cases[y + 1][x] == 5 || cases[y-1][x] == 5 || cases[y][x - 1] == 5 || cases[y][x + 1] == 5){
-				int d = 1;
-				cases[y][x] = 3;
-				cases[y + 1][x] = 4;
-				System.out.println("Vous avez" +d+ "diamands");
-				d++;
+		if (cases[y2][x2] == ESCAPE) {
+			cases[y1][x1] = UNDERGROUND;
+			cases[y2][x2] = PLAYER;
+			System.out.println("VICTOIRE");
+		}
+		if (cases[y2][x2] == DIAMOND) {
+			cases[y1][x1] = UNDERGROUND;
+			cases[y2][x2] = PLAYER;
+			nbDiamant++;
+			System.out.println("DIAMANT " + nbDiamant);
+		}
+		repaint();
+	}
+
+	protected void moveOnDiamond() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 4) {
+					if (cases[y + 1][x] == 5 || cases[y - 1][x] == 5 || cases[y][x - 1] == 5 || cases[y][x + 1] == 5) {
+						int d = 1;
+						cases[y][x] = 3;
+						// cases[y + 1][x] = 4 || cases[y - 1][x] == 4 || cases[y][x - 1] == 4 ||
+						// cases[y][x + 1] == 4;
+						System.out.println("Vous avez" + d + "diamands");
+						d++;
+					}
+
+				}
 			}
-		
 		}
 	}
 }
-}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
