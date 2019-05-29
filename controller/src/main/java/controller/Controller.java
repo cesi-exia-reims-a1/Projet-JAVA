@@ -92,4 +92,23 @@ public final class Controller implements IController {
 			break;
 		}
 	}
+
+	/*
+	 * public void loadMap() { this.map = new Map() try {
+	 * 
+	 * // Class.forName("com.mysql.jdbc.Driver"); System.out.println("Driver O.K.");
+	 * 
+	 * String url =
+	 * "jdbc:mysql://localhost:3306/jpublankproject?serverTimezone=UTC"; String user
+	 * = "root"; String passwd = "";
+	 * 
+	 * Connection conn = DriverManager.getConnection(url, user, passwd);
+	 * System.out.println("Connexion effective !");
+	 * 
+	 * Statement stmt = conn.createStatement(); ResultSet rs =
+	 * stmt.executeQuery("SELECT * FROM map1"); int[][] maMap = map.getCases();
+	 * while (rs.next()) { maMap[rs.getInt("x")][rs.getInt("y")] = rs.getInt("id");
+	 * System.out.println(rs.getInt("x") + " " + rs.getInt("y") + " " +
+	 * rs.getInt("id")); } } catch (Exception e) { e.printStackTrace(); } }
+	 */
 }

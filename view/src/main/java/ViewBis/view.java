@@ -1,21 +1,17 @@
 package ViewBis;
 
-import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class view extends JPanel {
 
@@ -28,8 +24,8 @@ public class view extends JPanel {
 	private BufferedImage image6;
 	private BufferedImage image7;
 	private BufferedImage imageWin;
-	
-	int[][] cases = new int[4][6];
+
+	int[][] cases = new int[20][20];
 
 	public view() {
 		try {
@@ -47,30 +43,29 @@ public class view extends JPanel {
 			ex.printStackTrace();
 		}
 
-		cases[0][0] = 1;
-		cases[0][1] = 1;
-		cases[0][2] = 1;
-		cases[0][3] = 1;
-		cases[0][4] = 1;
-		cases[0][5] = 1;
-		cases[1][0] = 1;
-		cases[1][1] = 4;
-		cases[1][2] = 2;
-		cases[1][3] = 6;
-		cases[1][4] = 8;
-		cases[1][5] = 1;
-		cases[2][0] = 1;
-		cases[2][1] = 5;
-		cases[2][2] = 2;
-		cases[2][3] = 2;
-		cases[2][4] = 2;
-		cases[2][5] = 1;
-		cases[3][0] = 1;
-		cases[3][1] = 1;
-		cases[3][2] = 1;
-		cases[3][3] = 1;
-		cases[3][4] = 1;
-		cases[3][5] = 1;
+		try {
+
+			// Class.forName("com.mysql.jdbc.Driver");
+			System.out.println("Driver O.K.");
+
+			String url = "jdbc:mysql://localhost:3306/jpublankproject?serverTimezone=UTC";
+			String user = "root";
+			String passwd = "";
+
+			Connection conn = DriverManager.getConnection(url, user, passwd);
+			System.out.println("Connexion effective !");
+
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM map1");
+
+			while (rs.next()) {
+				cases[rs.getInt("x")][rs.getInt("y")] = rs.getInt("id");
+				// System.out.println(rs.getInt("x") + " " + rs.getInt("y") + " " +
+				// rs.getInt("id"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -109,7 +104,7 @@ public class view extends JPanel {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == 4) {
-					if (cases[y][x + 1] == 2 || cases[y][x + 1] == 3 ) {
+					if (cases[y][x + 1] == 2 || cases[y][x + 1] == 3) {
 						cases[y][x] = 3;
 						cases[y][x + 1] = 4;
 						break;
@@ -118,12 +113,12 @@ public class view extends JPanel {
 						cases[y][x] = 3;
 						cases[y][x + 1] = 4;
 						System.out.println("VICTOIRE");
-					
-						}
+
 					}
 				}
 			}
-		
+		}
+
 		repaint();
 	}
 
@@ -131,9 +126,10 @@ public class view extends JPanel {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == 4) {
-					if (cases[y][x - 1] == 2 || cases[y][x - 1] == 3 ) {
+					if (cases[y][x - 1] == 2 || cases[y][x - 1] == 3) {
 						cases[y][x] = 3;
 						cases[y][x - 1] = 4;
+						break;
 					}
 					if (cases[y][x - 1] == 8) {
 						cases[y][x] = 3;
@@ -146,7 +142,6 @@ public class view extends JPanel {
 		repaint();
 	}
 
-
 	protected void moveUp() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
@@ -154,6 +149,7 @@ public class view extends JPanel {
 					if (cases[y - 1][x] == 3 || cases[y - 1][x] == 2) {
 						cases[y][x] = 3;
 						cases[y - 1][x] = 4;
+						break;
 					}
 					if (cases[y - 1][x] == 8) {
 						cases[y][x] = 3;
@@ -173,6 +169,7 @@ public class view extends JPanel {
 					if (cases[y + 1][x] == 2 || cases[y + 1][x] == 3) {
 						cases[y][x] = 3;
 						cases[y + 1][x] = 4;
+						break;
 					}
 					if (cases[y + 1][x] == 8) {
 						cases[y][x] = 3;
@@ -183,36 +180,22 @@ public class view extends JPanel {
 			}
 		}
 		repaint();
-		}
-	
-protected void moveOnDiamond() {
-for (int y = 0; y < cases.length; y++) {
-	for (int x = 0; x < cases[y].length; x++) {
-		if (cases[y][x] == 4) {
-			if (cases[y + 1][x] == 5 || cases[y-1][x] == 5 || cases[y][x - 1] == 5 || cases[y][x + 1] == 5){
-				int d = 1;
-				cases[y][x] = 3;
-				cases[y + 1][x] = 4;
-				System.out.println("Vous avez" +d+ "diamands");
-				d++;
+	}
+
+	protected void moveOnDiamond() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 4) {
+					if (cases[y + 1][x] == 5 || cases[y - 1][x] == 5 || cases[y][x - 1] == 5 || cases[y][x + 1] == 5) {
+						int d = 1;
+						cases[y][x] = 3;
+						cases[y + 1][x] = 4;
+						System.out.println("Vous avez" + d + "diamands");
+						d++;
+					}
+
+				}
 			}
-		
 		}
 	}
 }
-}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
