@@ -13,9 +13,9 @@ public class TestViewBis {
         view compo = new view();
         compo.setSize(100, 100);
         fenetre.add(compo);
-
+        fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fenetre.addKeyListener(new KeyListener() {
-
+        
             @Override
             public void keyTyped(KeyEvent e) {
             	if(e.getKeyCode() == KeyEvent.VK_D) {
