@@ -1,5 +1,6 @@
 package ViewBis;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -10,8 +11,11 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class view extends JPanel {
 
@@ -87,62 +91,40 @@ public class view extends JPanel {
 						monImageADraw.getHeight(this), this);
 			}
 		}
-		// g.drawImage(image, 0, 0, this); // see javadoc for more info on the
-		// parameters
-		// g.drawImage(image1, 50, 0, this); // see javadoc for more info on the
-		// parameters
+
 	}
+
+	/*
+	 * protected JLabel Win() { JLabel victoire = new JLabel("VICTOIRE");
+	 * 
+	 * setSize(300, 300);
+	 * 
+	 * setLocation(null);
+	 * 
+	 * setLayout(null);
+	 * 
+	 * victoire.setText("javafr");
+	 * 
+	 * victoire.setHorizontalAlignment(JLabel.CENTER);
+	 * 
+	 * victoire.setBorder(BorderFactory.createLineBorder(Color.black));
+	 * 
+	 * victoire.setBounds(50, 10, 200, 30);
+	 * 
+	 * return victoire; }
+	 */
 
 	protected void moveRight() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == 'P') {
-					if (cases[y][x+1] == 'G'|| cases[y][x+1] == 'U' || cases[y][x+1] == 'D' || cases[y][x+1] == 'E'){
-							cases[y][x] = 'U';
-							cases[y][x+1] = 'P';
-							break;
+					if (cases[y][x + 1] == 'G' || cases[y][x + 1] == 'U' || cases[y][x + 1] == 'D') {
+						cases[y][x] = 'U';
+						cases[y][x + 1] = 'P';
+						break;
 					}
-				}
-			}
-		}
-		repaint();
-	}
-	
-	protected void moveLeft() {
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 'P') {
-					if (cases[y][x-1] == 'G' || cases[y][x-1] == 'U' || cases[y][x-1] == 'D' || cases[y][x-1] == 'E' ){
-							cases[y][x] = 'U';
-							cases[y][x-1] = 'P';
-					}
-				}
-			}
-		}
-		repaint();
-	}
-	
-	protected void moveUp() {
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 'P') {
-					if (cases[y-1][x] == 'E' || cases[y-1][x] == 'U' || cases[y-1][x] == 'D' || cases[y-1][x] == 'G'){
-							cases[y][x] = 'U';
-							cases[y-1][x] = 'P';
-					}
-				}
-			}
-		}
-		repaint();
-	}
-	
-	protected void moveDown() {
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 'P') {
-					if (cases[y+1][x] == 'G' || cases[y+1][x] == 'U' || cases[y+1][x] == 'D' || cases[y+1][x] == 'E'){
-							cases[y][x] = 'U';
-							cases[y+1][x] = 'P';
+					if (cases[y][x + 1] == 'E') {
+						System.out.println("VICTOIRE");
 					}
 				}
 			}
@@ -150,5 +132,49 @@ public class view extends JPanel {
 		repaint();
 	}
 
+	protected void moveLeft() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 'P') {
+					if (cases[y][x - 1] == 'G' || cases[y][x - 1] == 'U' || cases[y][x - 1] == 'D'
+							|| cases[y][x - 1] == 'E') {
+						cases[y][x] = 'U';
+						cases[y][x - 1] = 'P';
+					}
+				}
+			}
+		}
+		repaint();
+	}
+
+	protected void moveUp() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 'P') {
+					if (cases[y - 1][x] == 'E' || cases[y - 1][x] == 'U' || cases[y - 1][x] == 'D'
+							|| cases[y - 1][x] == 'G') {
+						cases[y][x] = 'U';
+						cases[y - 1][x] = 'P';
+					}
+				}
+			}
+		}
+		repaint();
+	}
+
+	protected void moveDown() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 'P') {
+					if (cases[y + 1][x] == 'G' || cases[y + 1][x] == 'U' || cases[y + 1][x] == 'D'
+							|| cases[y + 1][x] == 'E') {
+						cases[y][x] = 'U';
+						cases[y + 1][x] = 'P';
+					}
+				}
+			}
+		}
+		repaint();
+	}
 
 }
