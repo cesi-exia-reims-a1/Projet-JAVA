@@ -25,7 +25,8 @@ public class view extends JPanel {
 	private BufferedImage image3;
 	private BufferedImage image4;
 	private BufferedImage image5;
-	char[][] cases = new char[4][6];
+	private BufferedImage imageWin;
+	int[][] cases = new int[4][6];
 
 	public view() {
 		try {
@@ -35,35 +36,36 @@ public class view extends JPanel {
 			image3 = ImageIO.read(new File("underground.png"));
 			image4 = ImageIO.read(new File("wall.png"));
 			image5 = ImageIO.read(new File("diamond.png"));
+			imageWin = ImageIO.read(new File("victoire.png"));
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
 
-		cases[0][0] = 'W';
-		cases[0][1] = 'W';
-		cases[0][2] = 'W';
-		cases[0][3] = 'W';
-		cases[0][4] = 'W';
-		cases[0][5] = 'W';
-		cases[1][0] = 'W';
-		cases[1][1] = 'P';
-		cases[1][2] = 'G';
-		cases[1][3] = 'G';
-		cases[1][4] = 'E';
-		cases[1][5] = 'W';
-		cases[2][0] = 'W';
-		cases[2][1] = 'D';
-		cases[2][2] = 'G';
-		cases[2][3] = 'G';
-		cases[2][4] = 'G';
-		cases[2][5] = 'W';
-		cases[3][0] = 'W';
-		cases[3][1] = 'W';
-		cases[3][2] = 'W';
-		cases[3][3] = 'W';
-		cases[3][4] = 'W';
-		cases[3][5] = 'W';
+		cases[0][0] = 1;
+		cases[0][1] = 1;
+		cases[0][2] = 1;
+		cases[0][3] = 1;
+		cases[0][4] = 1;
+		cases[0][5] = 1;
+		cases[1][0] = 1;
+		cases[1][1] = 4;
+		cases[1][2] = 2;
+		cases[1][3] = 2;
+		cases[1][4] = 8;
+		cases[1][5] = 1;
+		cases[2][0] = 1;
+		cases[2][1] = 5;
+		cases[2][2] = 2;
+		cases[2][3] = 2;
+		cases[2][4] = 2;
+		cases[2][5] = 1;
+		cases[3][0] = 1;
+		cases[3][1] = 1;
+		cases[3][2] = 1;
+		cases[3][3] = 1;
+		cases[3][4] = 1;
+		cases[3][5] = 1;
 
 	}
 
@@ -77,15 +79,15 @@ public class view extends JPanel {
 				// System.out.println(dx1 + "," + dy1);
 
 				Image monImageADraw = image;
-				if (cases[y][x] == 'G')
+				if (cases[y][x] == 2)
 					monImageADraw = image1;
-				if (cases[y][x] == 'E')
+				if (cases[y][x] == 8)
 					monImageADraw = image2;
-				if (cases[y][x] == 'U')
+				if (cases[y][x] == 3)
 					monImageADraw = image3;
-				if (cases[y][x] == 'W')
+				if (cases[y][x] == 1)
 					monImageADraw = image4;
-				if (cases[y][x] == 'D')
+				if (cases[y][x] == 5)
 					monImageADraw = image5;
 				g.drawImage(monImageADraw, dx1, dy1, 50 + 50 * x, 50 + 50 * y, 0, 0, monImageADraw.getWidth(this),
 						monImageADraw.getHeight(this), this);
@@ -94,36 +96,39 @@ public class view extends JPanel {
 
 	}
 
-	/*
-	 * protected JLabel Win() { JLabel victoire = new JLabel("VICTOIRE");
-	 * 
-	 * setSize(300, 300);
-	 * 
-	 * setLocation(null);
-	 * 
-	 * setLayout(null);
-	 * 
-	 * victoire.setText("javafr");
-	 * 
-	 * victoire.setHorizontalAlignment(JLabel.CENTER);
-	 * 
-	 * victoire.setBorder(BorderFactory.createLineBorder(Color.black));
-	 * 
-	 * victoire.setBounds(50, 10, 200, 30);
-	 * 
-	 * return victoire; }
-	 */
-
 	protected void moveRight() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 'P') {
-					if (cases[y][x + 1] == 'G' || cases[y][x + 1] == 'U' || cases[y][x + 1] == 'D') {
-						cases[y][x] = 'U';
-						cases[y][x + 1] = 'P';
+				if (cases[y][x] == 4) {
+					if (cases[y][x + 1] == 2 || cases[y][x + 1] == 3 ) {
+						cases[y][x] = 3;
+						cases[y][x + 1] = 4;
 						break;
 					}
-					if (cases[y][x + 1] == 'E') {
+					if (cases[y][x + 1] == 8) {
+						cases[y][x] = 3;
+						cases[y][x + 1] = 4;
+						System.out.println("VICTOIRE");
+					
+						}
+					}
+				}
+			}
+		
+		repaint();
+	}
+
+	protected void moveLeft() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 4) {
+					if (cases[y][x - 1] == 2 || cases[y][x - 1] == 3 ) {
+						cases[y][x] = 3;
+						cases[y][x - 1] = 4;
+					}
+					if (cases[y][x - 1] == 8) {
+						cases[y][x] = 3;
+						cases[y][x - 1] = 4;
 						System.out.println("VICTOIRE");
 					}
 				}
@@ -132,39 +137,19 @@ public class view extends JPanel {
 		repaint();
 	}
 
-	protected void moveLeft() {
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 'P') {
-				if (cases[y][x - 1] == 'G' || cases[y][x - 1] == 'U')
-					cases[y][x] = 'U';
-				    cases[y][x - 1] = 'P';
-				    	break;
-					if (cases[y][x - 1] == 'D') {
-						int d = 1;
-						cases[y][x] = 'U';
-						cases[y][x - 1] = 'P';
-						System.out.println("Vous avez" + d + "diamand");
-						d++;
-					
-				
-				repaint();
-				
-			
-		
-	
-			
-		
-
 
 	protected void moveUp() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 'P') {
-					if (cases[y - 1][x] == 'E' || cases[y - 1][x] == 'U' || cases[y - 1][x] == 'D'
-							|| cases[y - 1][x] == 'G') {
-						cases[y][x] = 'U';
-						cases[y - 1][x] = 'P';
+				if (cases[y][x] == 4) {
+					if (cases[y - 1][x] == 3 || cases[y - 1][x] == 2) {
+						cases[y][x] = 3;
+						cases[y - 1][x] = 4;
+					}
+					if (cases[y - 1][x] == 8) {
+						cases[y][x] = 3;
+						cases[y - 1][x] = 4;
+						System.out.println("VICTOIRE");
 					}
 				}
 			}
@@ -175,16 +160,52 @@ public class view extends JPanel {
 	protected void moveDown() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 'P') {
-					if (cases[y + 1][x] == 'G' || cases[y + 1][x] == 'U' || cases[y + 1][x] == 'D'
-							|| cases[y + 1][x] == 'E') {
-						cases[y][x] = 'U';
-						cases[y + 1][x] = 'P';
+				if (cases[y][x] == 4) {
+					if (cases[y + 1][x] == 2 || cases[y + 1][x] == 3) {
+						cases[y][x] = 3;
+						cases[y + 1][x] = 4;
+					}
+					if (cases[y + 1][x] == 8) {
+						cases[y][x] = 3;
+						cases[y + 1][x] = 4;
+						System.out.println("VICTOIRE");
 					}
 				}
 			}
 		}
 		repaint();
+		}
+	
+	protected void moveOnDiamond() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 4) {
+					if (cases[y + 1][x] == 5 || cases[y-1][x] == 5 || cases[y][x - 1] == 5 || cases[y][x + 1] == 5){
+						int d = 1;
+						cases[y][x] = 3;
+						cases[y + 1][x] = 4;
+						System.out.println("Vous avez" +d+ "diamands");
+						d++;
+					}
+				
+				}
+			}
+		}
 	}
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
