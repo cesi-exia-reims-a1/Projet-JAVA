@@ -97,58 +97,92 @@ public class view extends JPanel {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == 'P') {
-					if (cases[y][x+1] == 'G'|| cases[y][x+1] == 'U' || cases[y][x+1] == 'D' || cases[y][x+1] == 'E'){
-							cases[y][x] = 'U';
-							cases[y][x+1] = 'P';
-							break;
+					if (cases[y][x + 1] == 'G' || cases[y][x + 1] == 'U' || cases[y][x + 1] == 'D'
+							|| cases[y][x + 1] == 'E') {
+						cases[y][x] = 'U';
+						cases[y][x + 1] = 'P';
+						for (int d = 1; d < 10; d++) {
+							if (cases[y][x + 1] == 'D') {
+								int Nbredediamand = d;
+								System.out.println(Nbredediamand);
+							}
+						}
+
 					}
-				}
-			}
-		}
-		repaint();
-	}
-	
-	protected void moveLeft() {
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 'P') {
-					if (cases[y][x-1] == 'G' || cases[y][x-1] == 'U' || cases[y][x-1] == 'D' || cases[y][x-1] == 'E' ){
-							cases[y][x] = 'U';
-							cases[y][x-1] = 'P';
-					}
-				}
-			}
-		}
-		repaint();
-	}
-	
-	protected void moveUp() {
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 'P') {
-					if (cases[y-1][x] == 'E' || cases[y-1][x] == 'U' || cases[y-1][x] == 'D' || cases[y-1][x] == 'G'){
-							cases[y][x] = 'U';
-							cases[y-1][x] = 'P';
-					}
-				}
-			}
-		}
-		repaint();
-	}
-	
-	protected void moveDown() {
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == 'P') {
-					if (cases[y+1][x] == 'G' || cases[y+1][x] == 'U' || cases[y+1][x] == 'D' || cases[y+1][x] == 'E'){
-							cases[y][x] = 'U';
-							cases[y+1][x] = 'P';
-					}
+					break;
 				}
 			}
 		}
 		repaint();
 	}
 
+	protected void moveLeft() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 'P') {
+					if (cases[y][x - 1] == 'G' || cases[y][x - 1] == 'U' || cases[y][x - 1] == 'D'
+							|| cases[y][x - 1] == 'E') {
+						cases[y][x] = 'U';
+						cases[y][x - 1] = 'P';
+						for (int d = 1; d < 10; d++) {
+							if (cases[y][x - 1] == 'D') {
+								int Nbredediamand = d;
+								System.out.println(Nbredediamand);
+							}
+						}
+
+					}
+					break;
+				}
+			}
+		}
+		repaint();
+	}
+
+	protected void moveUp() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 'P') {
+					if (cases[y - 1][x] == 'E' || cases[y - 1][x] == 'U' || cases[y - 1][x] == 'D'
+							|| cases[y - 1][x] == 'G') {
+						cases[y][x] = 'U';
+						cases[y - 1][x] = 'P';
+						for (int d = 1; d < 10; d++) {
+							if (cases[y - 1][x] == 'D') {
+								int Nbredediamand = d;
+								System.out.println(Nbredediamand);
+							}
+						}
+
+					}
+					break;
+				}
+			}
+		}
+		repaint();
+	}
+
+	protected void moveDown() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == 'P') {
+					if (cases[y + 1][x] == 'G' || cases[y + 1][x] == 'U' || cases[y + 1][x] == 'D'
+							|| cases[y + 1][x] == 'E') {
+						cases[y][x] = 'U';
+						cases[y + 1][x] = 'P';
+					}
+					for (int d = 1; d < 10; d++) {
+						if (cases[y + 1][x] == 'D') {
+							int Nbredediamand = d;
+							System.out.println(Nbredediamand);
+						}
+					}
+					break;
+
+				}
+			}
+		}
+		repaint();
+	}
 
 }
