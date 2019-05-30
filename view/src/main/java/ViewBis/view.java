@@ -148,10 +148,16 @@ public class view extends JPanel {
 			cases[y1][x1] = UNDERGROUND;
 			cases[y2][x2] = PLAYER;
 		}
-		if (cases[y2][x2] == ESCAPE) {
-			cases[y1][x1] = UNDERGROUND;
-			cases[y2][x2] = PLAYER;
-			System.out.println("VICTOIRE");
+		if (nbDiamant == 5) {
+			if (cases[y2][x2] == ESCAPE) {
+				cases[y1][x1] = UNDERGROUND;
+				cases[y2][x2] = PLAYER;
+				System.out.println("VICTOIRE");
+			} else if (cases[y2][x2] == ESCAPE) {
+				cases[y1][x1] = UNDERGROUND;
+				cases[y2][x2] = ESCAPE;
+				System.out.print("Vous n'avez pas assez de diamant");
+			}
 		}
 		if (cases[y2][x2] == DIAMOND) {
 			cases[y1][x1] = UNDERGROUND;
@@ -161,18 +167,18 @@ public class view extends JPanel {
 		}
 		repaint();
 	}
-	
+
 	public void moveRock() {
-        for (int y = 0; y < cases.length; y++) {
-            for (int x = 0; x < cases[y].length; x++) {
-                if (cases[y][x] == ROCK) {
-                    if (cases[y+1][x] == UNDERGROUND) {
-                        cases[y][x] = UNDERGROUND;
-                        cases[y+1][x] = ROCK;
-                    }
-                }
-            }
-        }
-        repaint();
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == ROCK) {
+					if (cases[y + 1][x] == UNDERGROUND) {
+						cases[y][x] = UNDERGROUND;
+						cases[y + 1][x] = ROCK;
+					}
+				}
+			}
+		}
+		repaint();
 	}
 }
