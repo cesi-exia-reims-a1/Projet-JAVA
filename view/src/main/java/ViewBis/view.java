@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -23,6 +24,7 @@ public class view extends JPanel {
 	private static final int PLAYER = 4;
 	private static final int ESCAPE = 8;
 	private static final int ROCK = 6;
+	private static final int MONSTER = 7;
 	private BufferedImage image;
 	private BufferedImage image1;
 	private BufferedImage image2;
@@ -63,7 +65,7 @@ public class view extends JPanel {
 			System.out.println("Connexion effective !");
 
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM map2");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM map4");
 
 			while (rs.next()) {
 				cases[rs.getInt("x")][rs.getInt("y")] = rs.getInt("id");
@@ -132,10 +134,46 @@ public class view extends JPanel {
 
 	}
 
+	protected void moveMonsterRight() {
+
+		Point positionMonster = findMonster();
+		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x + 1, positionMonster.y);
+
+	}
+
+	protected void moveMonsterLeft() {
+		Point positionMonster = findMonster();
+		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x - 1, positionMonster.y);
+
+	}
+
+	protected void moveMonsterUp() {
+		Point positionMonster = findMonster();
+		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x, positionMonster.y - 1);
+
+	}
+
+	protected void moveMonsterDown() {
+		Point positionMonster = findMonster();
+		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x, positionMonster.y + 1);
+
+	}
+	
 	protected Point findPlayer() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == PLAYER) {
+					return new Point(x, y);
+				}
+			}
+		}
+		throw new RuntimeException("impossible");
+	}
+	
+	protected Point findMonster() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == MONSTER) {
 					return new Point(x, y);
 				}
 			}
@@ -168,6 +206,13 @@ public class view extends JPanel {
 		}
 		repaint();
 	}
+	
+	protected void appliqueMovementMonster(int x1, int y1, int x2, int y2) {
+		if (cases[y2][x2] == UNDERGROUND || cases[y2][x2] == PLAYER) {
+			cases[y1][x1] = UNDERGROUND;
+			cases[y2][x2] = MONSTER;
+		}
+	}
 
 	public void moveRock() {
 		for (int y = 0; y < cases.length; y++) {
@@ -176,10 +221,29 @@ public class view extends JPanel {
 					if (cases[y + 1][x] == UNDERGROUND) {
 						cases[y][x] = UNDERGROUND;
 						cases[y + 1][x] = ROCK;
-
 					}
 				}
 			}
+		}
+		repaint();
+	}
+	
+	public void moveMonster() {
+		Random r = new Random();
+		int n = r.nextInt(4);
+		switch(n) {
+		case 1 :
+			moveMonsterRight();
+			break;
+		case 2 :
+			moveMonsterLeft();
+			break;
+		case 3:
+			moveMonsterUp();
+			break;
+		case 4 :
+			moveMonsterDown();
+			break;
 		}
 		repaint();
 	}
