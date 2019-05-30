@@ -148,7 +148,7 @@ public class view extends JPanel {
 			cases[y1][x1] = UNDERGROUND;
 			cases[y2][x2] = PLAYER;
 		}
-		if (nbDiamant == 5) {
+		if (nbDiamant >= 5) {
 			if (cases[y2][x2] == ESCAPE) {
 				cases[y1][x1] = UNDERGROUND;
 				cases[y2][x2] = PLAYER;
@@ -157,7 +157,6 @@ public class view extends JPanel {
 			} else if (cases[y2][x2] == ESCAPE) {
 				cases[y1][x1] = PLAYER;
 				cases[y2][x2] = ESCAPE;
-
 			}
 
 		}
@@ -177,6 +176,7 @@ public class view extends JPanel {
 					if (cases[y + 1][x] == UNDERGROUND) {
 						cases[y][x] = UNDERGROUND;
 						cases[y + 1][x] = ROCK;
+
 					}
 				}
 			}
