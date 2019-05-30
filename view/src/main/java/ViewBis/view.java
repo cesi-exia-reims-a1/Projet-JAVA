@@ -77,7 +77,7 @@ public class view extends JPanel {
 			System.out.println("Connexion effective !");
 
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM map4");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM map1");
 
 			while (rs.next()) {
 				cases[rs.getInt("x")][rs.getInt("y")] = rs.getInt("id");
@@ -94,10 +94,9 @@ public class view extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if (victory) {
-			g.drawImage(imageWin, 0, 200, 0, 0, 200, 200, imageWin.getWidth(this), imageWin.getHeight(this), this);
+			g.drawImage(imageWin, 0, 0, 6100, 10000, 50, 50, 7000, 7000, this);
 		} else if (defeat) {
-			g.drawImage(imageLoose, 0, 200, 0, 0, 200, 200, imageLoose.getWidth(this), imageLoose.getHeight(this),
-					this);
+			g.drawImage(imageLoose, 0, 0, 1700, 2000, 0, 0, 400, 400, this);
 		} else {
 			for (int y = 0; y < cases.length; y++) {
 				for (int x = 0; x < cases[y].length; x++) {
