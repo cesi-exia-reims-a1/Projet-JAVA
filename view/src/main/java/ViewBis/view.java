@@ -47,7 +47,7 @@ public class view extends JPanel {
 			image5 = ImageIO.read(new File("diamond.png"));
 			image6 = ImageIO.read(new File("cailloux.png"));
 			image7 = ImageIO.read(new File("monstre.png"));
-			imageWin = ImageIO.read(new File("victory.png"));
+			imageWin = ImageIO.read(new File("victory.jpg"));
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
