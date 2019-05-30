@@ -230,7 +230,7 @@ public class view extends JPanel {
 
 	public void moveMonster() {
 		Random r = new Random();
-		int n = r.nextInt(4);
+		int n = r.nextInt(5);
 		switch (n) {
 		case 1:
 			moveMonsterRight();
