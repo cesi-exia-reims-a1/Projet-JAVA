@@ -242,7 +242,8 @@ public class view extends JPanel {
 			cases[y1][x1] = UNDERGROUND;
 			cases[y2][x2] = MONSTER;
 			System.out.println("Perdu");
-			setVisible(false);
+			defeat = true;
+			// setVisible(false);
 		}
 	}
 
