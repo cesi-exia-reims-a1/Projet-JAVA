@@ -34,8 +34,19 @@ public class view extends JPanel {
 	private BufferedImage image6;
 	private BufferedImage image7;
 	private BufferedImage imageWin;
+	private BufferedImage imageLoose;
 	int nbDiamant = 0;
 	int[][] cases = new int[20][20];
+	boolean victory;
+	boolean defeat;
+
+	public boolean getVictory() {
+		return victory;
+	}
+
+	public boolean getDefeat() {
+		return defeat;
+	}
 
 	public view() {
 		try {
@@ -48,6 +59,7 @@ public class view extends JPanel {
 			image6 = ImageIO.read(new File("cailloux.png"));
 			image7 = ImageIO.read(new File("monstre.png"));
 			imageWin = ImageIO.read(new File("victory.jpg"));
+			imageLoose = ImageIO.read(new File("defeat.png"));
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -81,29 +93,36 @@ public class view extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				int dx1 = 0 + 50 * x;
-				int dy1 = 0 + 50 * y;
-				// System.out.println(dx1 + "," + dy1);
+		if (victory) {
+			g.drawImage(imageWin, 0, 200, 0, 0, 200, 200, imageWin.getWidth(this), imageWin.getHeight(this), this);
+		} else if (defeat) {
+			g.drawImage(imageLoose, 0, 200, 0, 0, 200, 200, imageLoose.getWidth(this), imageLoose.getHeight(this),
+					this);
+		} else {
+			for (int y = 0; y < cases.length; y++) {
+				for (int x = 0; x < cases[y].length; x++) {
+					int dx1 = 0 + 50 * x;
+					int dy1 = 0 + 50 * y;
+					// System.out.println(dx1 + "," + dy1);
 
-				Image monImageADraw = image;
-				if (cases[y][x] == 2)
-					monImageADraw = image1;
-				if (cases[y][x] == 8)
-					monImageADraw = image2;
-				if (cases[y][x] == 3)
-					monImageADraw = image3;
-				if (cases[y][x] == 1)
-					monImageADraw = image4;
-				if (cases[y][x] == 5)
-					monImageADraw = image5;
-				if (cases[y][x] == 6)
-					monImageADraw = image6;
-				if (cases[y][x] == 7)
-					monImageADraw = image7;
-				g.drawImage(monImageADraw, dx1, dy1, 50 + 50 * x, 50 + 50 * y, 0, 0, monImageADraw.getWidth(this),
-						monImageADraw.getHeight(this), this);
+					Image monImageADraw = image;
+					if (cases[y][x] == 2)
+						monImageADraw = image1;
+					if (cases[y][x] == 8)
+						monImageADraw = image2;
+					if (cases[y][x] == 3)
+						monImageADraw = image3;
+					if (cases[y][x] == 1)
+						monImageADraw = image4;
+					if (cases[y][x] == 5)
+						monImageADraw = image5;
+					if (cases[y][x] == 6)
+						monImageADraw = image6;
+					if (cases[y][x] == 7)
+						monImageADraw = image7;
+					g.drawImage(monImageADraw, dx1, dy1, 50 + 50 * x, 50 + 50 * y, 0, 0, monImageADraw.getWidth(this),
+							monImageADraw.getHeight(this), this);
+				}
 			}
 		}
 
@@ -191,7 +210,7 @@ public class view extends JPanel {
 				cases[y1][x1] = UNDERGROUND;
 				cases[y2][x2] = PLAYER;
 				System.out.println("VICTOIRE");
-				setVisible(false);
+				victory = true;
 			} else if (cases[y2][x2] == ESCAPE) {
 				cases[y1][x1] = PLAYER;
 				cases[y2][x2] = ESCAPE;
@@ -204,12 +223,13 @@ public class view extends JPanel {
 			nbDiamant++;
 			System.out.println("DIAMANT " + nbDiamant);
 		}
-		
+
 		if (cases[y2][x2] == MONSTER) {
 			cases[y1][x1] = UNDERGROUND;
 			cases[y2][x2] = PLAYER;
 			System.out.println("Perdu");
-			setVisible(false);
+			defeat = true;
+			// setVisible(false);
 		}
 		repaint();
 	}
@@ -260,4 +280,13 @@ public class view extends JPanel {
 		}
 		repaint();
 	}
+
+	/*
+	 * public void TestFrame() { TestFrame tf = new TestFrame(); URL urlImage =
+	 * tf.getClass().getResource("victory.jpg"); JFrame fenetre; ImageIcon ii = new
+	 * ImageIcon(Toolkit.getDefaultToolkit().getImage(urlImage));
+	 * fenetre.getContentPane().add(new JLabel(ii));
+	 * fenetre.setBounds(1024/4,768/4,500,300);
+	 * fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); fenetre.show(); }
+	 */
 }
