@@ -22,6 +22,7 @@ public class view extends JPanel {
 	private static final int DIAMOND = 5;
 	private static final int PLAYER = 4;
 	private static final int ESCAPE = 8;
+	private static final int ROCK = 6;
 	private BufferedImage image;
 	private BufferedImage image1;
 	private BufferedImage image2;
@@ -159,5 +160,19 @@ public class view extends JPanel {
 			System.out.println("DIAMANT " + nbDiamant);
 		}
 		repaint();
+	}
+	
+	public void moveRock() {
+        for (int y = 0; y < cases.length; y++) {
+            for (int x = 0; x < cases[y].length; x++) {
+                if (cases[y][x] == ROCK) {
+                    if (cases[y+1][x] == UNDERGROUND) {
+                        cases[y][x] = UNDERGROUND;
+                        cases[y+1][x] = ROCK;
+                    }
+                }
+            }
+        }
+        repaint();
 	}
 }

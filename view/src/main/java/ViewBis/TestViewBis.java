@@ -36,15 +36,19 @@ public class TestViewBis {
 			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_D) {
 					compo.moveRight();
+					compo.moveRock();
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Q) {
 					compo.moveLeft();
+					compo.moveRock();
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Z) {
 					compo.moveUp();
+					compo.moveRock();
 				}
 				if (e.getKeyCode() == KeyEvent.VK_S) {
 					compo.moveDown();
+					compo.moveRock();
 				}
 			}
 
@@ -58,7 +62,6 @@ public class TestViewBis {
 
 			}
 		});
-
 		fenetre.setVisible(true);
 	}
 
