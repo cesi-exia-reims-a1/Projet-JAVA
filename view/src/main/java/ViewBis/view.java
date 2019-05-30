@@ -47,7 +47,7 @@ public class view extends JPanel {
 			image5 = ImageIO.read(new File("diamond.png"));
 			image6 = ImageIO.read(new File("cailloux.png"));
 			image7 = ImageIO.read(new File("monstre.png"));
-			imageWin = ImageIO.read(new File("victoire.png"));
+			imageWin = ImageIO.read(new File("victory.png"));
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -158,7 +158,7 @@ public class view extends JPanel {
 		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x, positionMonster.y + 1);
 
 	}
-	
+
 	protected Point findPlayer() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
@@ -169,7 +169,7 @@ public class view extends JPanel {
 		}
 		throw new RuntimeException("impossible");
 	}
-	
+
 	protected Point findMonster() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
@@ -206,7 +206,7 @@ public class view extends JPanel {
 		}
 		repaint();
 	}
-	
+
 	protected void appliqueMovementMonster(int x1, int y1, int x2, int y2) {
 		if (cases[y2][x2] == UNDERGROUND || cases[y2][x2] == PLAYER) {
 			cases[y1][x1] = UNDERGROUND;
@@ -227,21 +227,21 @@ public class view extends JPanel {
 		}
 		repaint();
 	}
-	
+
 	public void moveMonster() {
 		Random r = new Random();
 		int n = r.nextInt(4);
-		switch(n) {
-		case 1 :
+		switch (n) {
+		case 1:
 			moveMonsterRight();
 			break;
-		case 2 :
+		case 2:
 			moveMonsterLeft();
 			break;
 		case 3:
 			moveMonsterUp();
 			break;
-		case 4 :
+		case 4:
 			moveMonsterDown();
 			break;
 		}
