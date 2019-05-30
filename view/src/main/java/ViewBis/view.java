@@ -208,6 +208,7 @@ public class view extends JPanel {
 				}
 			}
 		}
+
 		throw new RuntimeException("impossible");
 	}
 
