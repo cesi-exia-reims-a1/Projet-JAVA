@@ -63,7 +63,7 @@ public class view extends JPanel {
 			System.out.println("Connexion effective !");
 
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM map1");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM map2");
 
 			while (rs.next()) {
 				cases[rs.getInt("x")][rs.getInt("y")] = rs.getInt("id");
@@ -153,11 +153,13 @@ public class view extends JPanel {
 				cases[y1][x1] = UNDERGROUND;
 				cases[y2][x2] = PLAYER;
 				System.out.println("VICTOIRE");
+				setVisible(false);
 			} else if (cases[y2][x2] == ESCAPE) {
-				cases[y1][x1] = UNDERGROUND;
+				cases[y1][x1] = PLAYER;
 				cases[y2][x2] = ESCAPE;
-				System.out.print("Vous n'avez pas assez de diamant");
+
 			}
+
 		}
 		if (cases[y2][x2] == DIAMOND) {
 			cases[y1][x1] = UNDERGROUND;
