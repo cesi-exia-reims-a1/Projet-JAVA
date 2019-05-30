@@ -204,6 +204,13 @@ public class view extends JPanel {
 			nbDiamant++;
 			System.out.println("DIAMANT " + nbDiamant);
 		}
+		
+		if (cases[y2][x2] == MONSTER) {
+			cases[y1][x1] = UNDERGROUND;
+			cases[y2][x2] = PLAYER;
+			System.out.println("Perdu");
+			setVisible(false);
+		}
 		repaint();
 	}
 
