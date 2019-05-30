@@ -187,12 +187,24 @@ public class view extends JPanel {
 		}
 		throw new RuntimeException("impossible");
 	}
+	
+	public boolean monsterHere() {
+        for (int y = 0; y < cases.length; y++) {
+            for (int x = 0; x < cases[y].length; x++) {
+                if (cases[y][x] == MONSTER) {
+                    return true;
+                }
+
+            }
+        }
+        return false;
+    }
 
 	protected Point findMonster() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == MONSTER) {
-					return new Point(x, y);
+					return new Point(x, y);			
 				}
 			}
 		}

@@ -20,15 +20,23 @@ public class TestViewBis {
 			public void keyTyped(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_D) {
 					compo.moveRight();
+					compo.moveRock();
+					compo.moveMonster();
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Q) {
 					compo.moveLeft();
+					compo.moveRock();
+					compo.moveMonster();
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Z) {
 					compo.moveUp();
+					compo.moveRock();
+					compo.moveMonster();
 				}
 				if (e.getKeyCode() == KeyEvent.VK_S) {
 					compo.moveDown();
+					compo.moveRock();
+					compo.moveMonster();
 				}
 			}
 
