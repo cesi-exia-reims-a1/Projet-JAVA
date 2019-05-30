@@ -215,9 +215,15 @@ public class view extends JPanel {
 	}
 
 	protected void appliqueMovementMonster(int x1, int y1, int x2, int y2) {
-		if (cases[y2][x2] == UNDERGROUND || cases[y2][x2] == PLAYER) {
+		if (cases[y2][x2] == UNDERGROUND) {
 			cases[y1][x1] = UNDERGROUND;
 			cases[y2][x2] = MONSTER;
+		}
+		if (cases[y2][x2] == PLAYER) {
+			cases[y1][x1] = UNDERGROUND;
+			cases[y2][x2] = MONSTER;
+			System.out.println("Perdu");
+			setVisible(false);
 		}
 	}
 
