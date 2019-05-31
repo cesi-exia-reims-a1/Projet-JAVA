@@ -125,9 +125,9 @@ public class view extends JPanel {
 						monImageADraw = image6;
 					if (cases[y][x] == 7)
 						monImageADraw = image7;
-					if (cases[y][x] == 7)
+					if (cases[y][x] == 9)
 						monImageADraw = image9;
-					if (cases[y][x] == 7)
+					if (cases[y][x] == 10)
 						monImageADraw = image10;
 					g.drawImage(monImageADraw, dx1, dy1, 50 + 50 * x, 50 + 50 * y, 0, 0, monImageADraw.getWidth(this),
 							monImageADraw.getHeight(this), this);
