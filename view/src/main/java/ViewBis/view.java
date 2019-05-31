@@ -190,50 +190,50 @@ public class view extends JPanel {
 	protected void moveMonsterRight2() {
 
 		Point positionMonster2 = findMonster2();
-		appliqueMovementMonster(positionMonster2.x, positionMonster2.y, positionMonster2.x + 1, positionMonster2.y);
+		appliqueMovementMonster2(positionMonster2.x, positionMonster2.y, positionMonster2.x + 1, positionMonster2.y);
 
 	}
 
 	protected void moveMonsterLeft2() {
 		Point positionMonster2 = findMonster2();
-		appliqueMovementMonster(positionMonster2.x, positionMonster2.y, positionMonster2.x - 1, positionMonster2.y);
+		appliqueMovementMonster2(positionMonster2.x, positionMonster2.y, positionMonster2.x - 1, positionMonster2.y);
 
 	}
 
 	protected void moveMonsterUp2() {
 		Point positionMonster2 = findMonster2();
-		appliqueMovementMonster(positionMonster2.x, positionMonster2.y, positionMonster2.x, positionMonster2.y - 1);
+		appliqueMovementMonster2(positionMonster2.x, positionMonster2.y, positionMonster2.x, positionMonster2.y - 1);
 
 	}
 
 	protected void moveMonsterDown2() {
 		Point positionMonster2 = findMonster2();
-		appliqueMovementMonster(positionMonster2.x, positionMonster2.y, positionMonster2.x, positionMonster2.y + 1);
+		appliqueMovementMonster2(positionMonster2.x, positionMonster2.y, positionMonster2.x, positionMonster2.y + 1);
 
 	}
 
 	protected void moveMonsterRight3() {
 
 		Point positionMonster3 = findMonster3();
-		appliqueMovementMonster(positionMonster3.x, positionMonster3.y, positionMonster3.x + 1, positionMonster3.y);
+		appliqueMovementMonster3(positionMonster3.x, positionMonster3.y, positionMonster3.x + 1, positionMonster3.y);
 
 	}
 
 	protected void moveMonsterLeft3() {
 		Point positionMonster3 = findMonster3();
-		appliqueMovementMonster(positionMonster3.x, positionMonster3.y, positionMonster3.x - 1, positionMonster3.y);
+		appliqueMovementMonster3(positionMonster3.x, positionMonster3.y, positionMonster3.x - 1, positionMonster3.y);
 
 	}
 
 	protected void moveMonsterUp3() {
 		Point positionMonster3 = findMonster3();
-		appliqueMovementMonster(positionMonster3.x, positionMonster3.y, positionMonster3.x, positionMonster3.y - 1);
+		appliqueMovementMonster3(positionMonster3.x, positionMonster3.y, positionMonster3.x, positionMonster3.y - 1);
 
 	}
 
 	protected void moveMonsterDown3() {
 		Point positionMonster3 = findMonster3();
-		appliqueMovementMonster(positionMonster3.x, positionMonster3.y, positionMonster3.x, positionMonster3.y + 1);
+		appliqueMovementMonster3(positionMonster3.x, positionMonster3.y, positionMonster3.x, positionMonster3.y + 1);
 
 	}
 
