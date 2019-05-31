@@ -25,12 +25,24 @@ public class TestViewBis {
 					if (compo.monsterHere()) {
 						compo.moveMonster();
 					}
+					if (compo.monsterHere2()) {
+						compo.moveMonster2();
+					}
+					if (compo.monsterHere3()) {
+						compo.moveMonster3();
+					}
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Q) {
 					compo.moveLeft();
 					compo.moveRock();
 					if (compo.monsterHere()) {
 						compo.moveMonster();
+					}
+					if (compo.monsterHere2()) {
+						compo.moveMonster2();
+					}
+					if (compo.monsterHere3()) {
+						compo.moveMonster3();
 					}
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Z) {
@@ -39,12 +51,24 @@ public class TestViewBis {
 					if (compo.monsterHere()) {
 						compo.moveMonster();
 					}
+					if (compo.monsterHere2()) {
+						compo.moveMonster2();
+					}
+					if (compo.monsterHere3()) {
+						compo.moveMonster3();
+					}
 				}
 				if (e.getKeyCode() == KeyEvent.VK_S) {
 					compo.moveDown();
 					compo.moveRock();
 					if (compo.monsterHere()) {
 						compo.moveMonster();
+					}
+					if (compo.monsterHere2()) {
+						compo.moveMonster2();
+					}
+					if (compo.monsterHere3()) {
+						compo.moveMonster3();
 					}
 				}
 			}
@@ -57,12 +81,24 @@ public class TestViewBis {
 					if (compo.monsterHere()) {
 						compo.moveMonster();
 					}
+					if (compo.monsterHere2()) {
+						compo.moveMonster2();
+					}
+					if (compo.monsterHere3()) {
+						compo.moveMonster3();
+					}
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Q) {
 					compo.moveLeft();
 					compo.moveRock();
 					if (compo.monsterHere()) {
 						compo.moveMonster();
+					}
+					if (compo.monsterHere2()) {
+						compo.moveMonster2();
+					}
+					if (compo.monsterHere3()) {
+						compo.moveMonster3();
 					}
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Z) {
@@ -71,12 +107,24 @@ public class TestViewBis {
 					if (compo.monsterHere()) {
 						compo.moveMonster();
 					}
+					if (compo.monsterHere2()) {
+						compo.moveMonster2();
+					}
+					if (compo.monsterHere3()) {
+						compo.moveMonster3();
+					}
 				}
 				if (e.getKeyCode() == KeyEvent.VK_S) {
 					compo.moveDown();
 					compo.moveRock();
 					if (compo.monsterHere()) {
 						compo.moveMonster();
+					}
+					if (compo.monsterHere2()) {
+						compo.moveMonster2();
+					}
+					if (compo.monsterHere3()) {
+						compo.moveMonster3();
 					}
 				}
 			}

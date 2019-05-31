@@ -25,6 +25,8 @@ public class view extends JPanel {
 	private static final int ESCAPE = 8;
 	private static final int ROCK = 6;
 	private static final int MONSTER = 7;
+	private static final int MONSTER2 = 9;
+	private static final int MONSTER3 = 10;
 	private BufferedImage image;
 	private BufferedImage image1;
 	private BufferedImage image2;
@@ -176,6 +178,56 @@ public class view extends JPanel {
 		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x, positionMonster.y + 1);
 
 	}
+	
+	protected void moveMonsterRight2() {
+
+		Point positionMonster = findMonster2();
+		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x + 1, positionMonster.y);
+
+	}
+
+	protected void moveMonsterLeft2() {
+		Point positionMonster = findMonster2();
+		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x - 1, positionMonster.y);
+
+	}
+
+	protected void moveMonsterUp2() {
+		Point positionMonster = findMonster2();
+		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x, positionMonster.y - 1);
+
+	}
+
+	protected void moveMonsterDown2() {
+		Point positionMonster = findMonster2();
+		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x, positionMonster.y + 1);
+
+	}
+	
+	protected void moveMonsterRight3() {
+
+		Point positionMonster = findMonster3();
+		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x + 1, positionMonster.y);
+
+	}
+
+	protected void moveMonsterLeft3() {
+		Point positionMonster = findMonster3();
+		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x - 1, positionMonster.y);
+
+	}
+
+	protected void moveMonsterUp3() {
+		Point positionMonster = findMonster3();
+		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x, positionMonster.y - 1);
+
+	}
+
+	protected void moveMonsterDown3() {
+		Point positionMonster = findMonster3();
+		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x, positionMonster.y + 1);
+
+	}
 
 	protected Point findPlayer() {
 		for (int y = 0; y < cases.length; y++) {
@@ -199,11 +251,59 @@ public class view extends JPanel {
 		}
 		return false;
 	}
+	
+	public boolean monsterHere2() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == MONSTER2) {
+					return true;
+				}
+
+			}
+		}
+		return false;
+	}
+	
+	public boolean monsterHere3() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == MONSTER3) {
+					return true;
+				}
+
+			}
+		}
+		return false;
+	}
 
 	protected Point findMonster() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == MONSTER) {
+					return new Point(x, y);
+				}
+			}
+		}
+
+		throw new RuntimeException("impossible");
+	}
+	
+	protected Point findMonster2() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == MONSTER2) {
+					return new Point(x, y);
+				}
+			}
+		}
+
+		throw new RuntimeException("impossible");
+	}
+	
+	protected Point findMonster3() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == MONSTER3) {
 					return new Point(x, y);
 				}
 			}
@@ -259,6 +359,34 @@ public class view extends JPanel {
 			// setVisible(false);
 		}
 	}
+	
+	protected void appliqueMovementMonster2(int x1, int y1, int x2, int y2) {
+		if (cases[y2][x2] == UNDERGROUND) {
+			cases[y1][x1] = UNDERGROUND;
+			cases[y2][x2] = MONSTER2;
+		}
+		if (cases[y2][x2] == PLAYER) {
+			cases[y1][x1] = UNDERGROUND;
+			cases[y2][x2] = MONSTER2;
+			System.out.println("Perdu");
+			defeat = true;
+			// setVisible(false);
+		}
+	}
+	
+	protected void appliqueMovementMonster3(int x1, int y1, int x2, int y2) {
+		if (cases[y2][x2] == UNDERGROUND) {
+			cases[y1][x1] = UNDERGROUND;
+			cases[y2][x2] = MONSTER3;
+		}
+		if (cases[y2][x2] == PLAYER) {
+			cases[y1][x1] = UNDERGROUND;
+			cases[y2][x2] = MONSTER3;
+			System.out.println("Perdu");
+			defeat = true;
+			// setVisible(false);
+		}
+	}
 
 	public void moveRock() {
 		for (int y = 0; y < cases.length; y++) {
@@ -295,6 +423,46 @@ public class view extends JPanel {
 			break;
 		case 4:
 			moveMonsterDown();
+			break;
+		}
+		repaint();
+	}
+	
+	public void moveMonster2() {
+		Random r = new Random();
+		int n = r.nextInt(5);
+		switch (n) {
+		case 1:
+			moveMonsterRight2();
+			break;
+		case 2:
+			moveMonsterLeft2();
+			break;
+		case 3:
+			moveMonsterUp2();
+			break;
+		case 4:
+			moveMonsterDown2();
+			break;
+		}
+		repaint();
+	}
+	
+	public void moveMonster3() {
+		Random r = new Random();
+		int n = r.nextInt(5);
+		switch (n) {
+		case 1:
+			moveMonsterRight3();
+			break;
+		case 2:
+			moveMonsterLeft3();
+			break;
+		case 3:
+			moveMonsterUp3();
+			break;
+		case 4:
+			moveMonsterDown3();
 			break;
 		}
 		repaint();
