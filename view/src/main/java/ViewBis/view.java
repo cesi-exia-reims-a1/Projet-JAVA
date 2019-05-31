@@ -58,7 +58,7 @@ public class view extends JPanel {
 			image5 = ImageIO.read(new File("diamond.png"));
 			image6 = ImageIO.read(new File("cailloux.png"));
 			image7 = ImageIO.read(new File("monstre.png"));
-			imageWin = ImageIO.read(new File("victory.jpg"));
+			imageWin = ImageIO.read(new File("victory.png"));
 			imageLoose = ImageIO.read(new File("defeat.png"));
 
 		} catch (IOException ex) {
@@ -94,9 +94,9 @@ public class view extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if (victory) {
-			g.drawImage(imageWin, 0, 0, 6100, 10000, 50, 50, 7000, 7000, this);
+			g.drawImage(imageWin, 0, 0, 9000, 9000, 125, 0, 5500, 4500, this);
 		} else if (defeat) {
-			g.drawImage(imageLoose, 0, 0, 1700, 2000, 0, 0, 400, 400, this);
+			g.drawImage(imageLoose, 0, 0, 1700, 2000, 10, 0, 400, 400, this);
 		} else {
 			for (int y = 0; y < cases.length; y++) {
 				for (int x = 0; x < cases[y].length; x++) {
