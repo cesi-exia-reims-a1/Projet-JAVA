@@ -77,7 +77,7 @@ public class view extends JPanel {
 			System.out.println("Connexion effective !");
 
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM map1");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM map5");
 
 			while (rs.next()) {
 				cases[rs.getInt("x")][rs.getInt("y")] = rs.getInt("id");
