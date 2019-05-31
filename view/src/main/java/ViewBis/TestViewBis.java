@@ -20,8 +20,8 @@ public class TestViewBis {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_D) {
-					compo.moveRight();
 					compo.moveRock();
+					compo.moveRight();
 					if (compo.monsterHere()) {
 						compo.moveMonster();
 					}
@@ -33,8 +33,8 @@ public class TestViewBis {
 					}
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Q) {
-					compo.moveLeft();
 					compo.moveRock();
+					compo.moveLeft();
 					if (compo.monsterHere()) {
 						compo.moveMonster();
 					}
@@ -46,8 +46,8 @@ public class TestViewBis {
 					}
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Z) {
-					compo.moveUp();
 					compo.moveRock();
+					compo.moveUp();
 					if (compo.monsterHere()) {
 						compo.moveMonster();
 					}
@@ -59,8 +59,8 @@ public class TestViewBis {
 					}
 				}
 				if (e.getKeyCode() == KeyEvent.VK_S) {
-					compo.moveDown();
 					compo.moveRock();
+					compo.moveDown();
 					if (compo.monsterHere()) {
 						compo.moveMonster();
 					}
@@ -72,12 +72,12 @@ public class TestViewBis {
 					}
 				}
 			}
-
+			
 			@Override
 			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_D) {
-					compo.moveRight();
 					compo.moveRock();
+					compo.moveRight();
 					if (compo.monsterHere()) {
 						compo.moveMonster();
 					}
@@ -89,8 +89,8 @@ public class TestViewBis {
 					}
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Q) {
-					compo.moveLeft();
 					compo.moveRock();
+					compo.moveLeft();
 					if (compo.monsterHere()) {
 						compo.moveMonster();
 					}
@@ -102,8 +102,8 @@ public class TestViewBis {
 					}
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Z) {
-					compo.moveUp();
 					compo.moveRock();
+					compo.moveUp();
 					if (compo.monsterHere()) {
 						compo.moveMonster();
 					}
@@ -115,8 +115,8 @@ public class TestViewBis {
 					}
 				}
 				if (e.getKeyCode() == KeyEvent.VK_S) {
-					compo.moveDown();
 					compo.moveRock();
+					compo.moveDown();
 					if (compo.monsterHere()) {
 						compo.moveMonster();
 					}
@@ -126,17 +126,11 @@ public class TestViewBis {
 					if (compo.monsterHere3()) {
 						compo.moveMonster3();
 					}
-				}
+				}			
 			}
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				/*
-				 * if(e.getKeyCode() == KeyEvent.VK_D) { compo.moveRight(); } if(e.getKeyCode()
-				 * == KeyEvent.VK_Q) { compo.moveLeft(); } if(e.getKeyCode() == KeyEvent.VK_Z) {
-				 * compo.moveUp(); } if(e.getKeyCode() == KeyEvent.VK_S) { compo.moveDown(); }
-				 */
-
 			}
 		});
 		fenetre.setVisible(true);

@@ -83,7 +83,7 @@ public class view extends JPanel {
 			System.out.println("Connexion effective !");
 
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM map5");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM map1");
 
 			while (rs.next()) {
 				cases[rs.getInt("x")][rs.getInt("y")] = rs.getInt("id");
@@ -404,12 +404,12 @@ public class view extends JPanel {
 						cases[y][x] = UNDERGROUND;
 						cases[y + 1][x] = ROCK;
 					}
-					if (cases[y + 1][x] == PLAYER) {
+					/*if (cases[y + 1][x] == PLAYER) {
 						cases[y][x] = UNDERGROUND;
 						cases[y + 1][x] = ROCK;
 						System.out.println("Perdu");
 						defeat = true;
-					}
+					}*/
 				}
 			}
 		}
