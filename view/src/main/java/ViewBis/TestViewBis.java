@@ -9,10 +9,11 @@ public class TestViewBis {
 
 	public static void main(String[] args) {
 		JFrame fenetre = new JFrame();
-		fenetre.setSize(1000, 1000);
+		fenetre.setSize(1020, 1050);
 		view compo = new view();
 		compo.setSize(100, 100);
 		fenetre.add(compo);
+		fenetre.setResizable(false);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.addKeyListener(new KeyListener() {
 
