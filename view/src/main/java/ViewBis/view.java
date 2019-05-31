@@ -35,6 +35,8 @@ public class view extends JPanel {
 	private BufferedImage image5;
 	private BufferedImage image6;
 	private BufferedImage image7;
+	private BufferedImage image9;
+	private BufferedImage image10;
 	private BufferedImage imageWin;
 	private BufferedImage imageLoose;
 	int nbDiamant = 0;
@@ -60,6 +62,8 @@ public class view extends JPanel {
 			image5 = ImageIO.read(new File("diamond.png"));
 			image6 = ImageIO.read(new File("cailloux.png"));
 			image7 = ImageIO.read(new File("monstre.png"));
+			image9 = ImageIO.read(new File("monstre2.png"));
+			image10 = ImageIO.read(new File("monstre3.png"));
 			imageWin = ImageIO.read(new File("victory.png"));
 			imageLoose = ImageIO.read(new File("defeat.png"));
 
@@ -121,6 +125,10 @@ public class view extends JPanel {
 						monImageADraw = image6;
 					if (cases[y][x] == 7)
 						monImageADraw = image7;
+					if (cases[y][x] == 7)
+						monImageADraw = image9;
+					if (cases[y][x] == 7)
+						monImageADraw = image10;
 					g.drawImage(monImageADraw, dx1, dy1, 50 + 50 * x, 50 + 50 * y, 0, 0, monImageADraw.getWidth(this),
 							monImageADraw.getHeight(this), this);
 				}
@@ -178,54 +186,54 @@ public class view extends JPanel {
 		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x, positionMonster.y + 1);
 
 	}
-	
+
 	protected void moveMonsterRight2() {
 
-		Point positionMonster = findMonster2();
-		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x + 1, positionMonster.y);
+		Point positionMonster2 = findMonster2();
+		appliqueMovementMonster(positionMonster2.x, positionMonster2.y, positionMonster2.x + 1, positionMonster2.y);
 
 	}
 
 	protected void moveMonsterLeft2() {
-		Point positionMonster = findMonster2();
-		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x - 1, positionMonster.y);
+		Point positionMonster2 = findMonster2();
+		appliqueMovementMonster(positionMonster2.x, positionMonster2.y, positionMonster2.x - 1, positionMonster2.y);
 
 	}
 
 	protected void moveMonsterUp2() {
-		Point positionMonster = findMonster2();
-		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x, positionMonster.y - 1);
+		Point positionMonster2 = findMonster2();
+		appliqueMovementMonster(positionMonster2.x, positionMonster2.y, positionMonster2.x, positionMonster2.y - 1);
 
 	}
 
 	protected void moveMonsterDown2() {
-		Point positionMonster = findMonster2();
-		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x, positionMonster.y + 1);
+		Point positionMonster2 = findMonster2();
+		appliqueMovementMonster(positionMonster2.x, positionMonster2.y, positionMonster2.x, positionMonster2.y + 1);
 
 	}
-	
+
 	protected void moveMonsterRight3() {
 
-		Point positionMonster = findMonster3();
-		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x + 1, positionMonster.y);
+		Point positionMonster3 = findMonster3();
+		appliqueMovementMonster(positionMonster3.x, positionMonster3.y, positionMonster3.x + 1, positionMonster3.y);
 
 	}
 
 	protected void moveMonsterLeft3() {
-		Point positionMonster = findMonster3();
-		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x - 1, positionMonster.y);
+		Point positionMonster3 = findMonster3();
+		appliqueMovementMonster(positionMonster3.x, positionMonster3.y, positionMonster3.x - 1, positionMonster3.y);
 
 	}
 
 	protected void moveMonsterUp3() {
-		Point positionMonster = findMonster3();
-		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x, positionMonster.y - 1);
+		Point positionMonster3 = findMonster3();
+		appliqueMovementMonster(positionMonster3.x, positionMonster3.y, positionMonster3.x, positionMonster3.y - 1);
 
 	}
 
 	protected void moveMonsterDown3() {
-		Point positionMonster = findMonster3();
-		appliqueMovementMonster(positionMonster.x, positionMonster.y, positionMonster.x, positionMonster.y + 1);
+		Point positionMonster3 = findMonster3();
+		appliqueMovementMonster(positionMonster3.x, positionMonster3.y, positionMonster3.x, positionMonster3.y + 1);
 
 	}
 
@@ -251,7 +259,7 @@ public class view extends JPanel {
 		}
 		return false;
 	}
-	
+
 	public boolean monsterHere2() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
@@ -263,7 +271,7 @@ public class view extends JPanel {
 		}
 		return false;
 	}
-	
+
 	public boolean monsterHere3() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
@@ -287,7 +295,7 @@ public class view extends JPanel {
 
 		throw new RuntimeException("impossible");
 	}
-	
+
 	protected Point findMonster2() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
@@ -299,7 +307,7 @@ public class view extends JPanel {
 
 		throw new RuntimeException("impossible");
 	}
-	
+
 	protected Point findMonster3() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
@@ -359,7 +367,7 @@ public class view extends JPanel {
 			// setVisible(false);
 		}
 	}
-	
+
 	protected void appliqueMovementMonster2(int x1, int y1, int x2, int y2) {
 		if (cases[y2][x2] == UNDERGROUND) {
 			cases[y1][x1] = UNDERGROUND;
@@ -373,7 +381,7 @@ public class view extends JPanel {
 			// setVisible(false);
 		}
 	}
-	
+
 	protected void appliqueMovementMonster3(int x1, int y1, int x2, int y2) {
 		if (cases[y2][x2] == UNDERGROUND) {
 			cases[y1][x1] = UNDERGROUND;
@@ -427,7 +435,7 @@ public class view extends JPanel {
 		}
 		repaint();
 	}
-	
+
 	public void moveMonster2() {
 		Random r = new Random();
 		int n = r.nextInt(5);
@@ -447,7 +455,7 @@ public class view extends JPanel {
 		}
 		repaint();
 	}
-	
+
 	public void moveMonster3() {
 		Random r = new Random();
 		int n = r.nextInt(5);
