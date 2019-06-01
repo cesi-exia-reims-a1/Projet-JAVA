@@ -100,7 +100,7 @@ public class view extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if (victory) {
-			g.drawImage(imageWin, 0, 0, 9000, 9000, 125, 0, 5500, 4500, this);
+			g.drawImage(imageWin, 0, 0, 9000, 9000, 125, 0, 5500, 4000, this);
 		} else if (defeat) {
 			g.drawImage(imageLoose, 0, 0, 1700, 2000, 10, 0, 400, 400, this);
 		} else {
@@ -404,12 +404,10 @@ public class view extends JPanel {
 						cases[y][x] = UNDERGROUND;
 						cases[y + 1][x] = ROCK;
 					}
-					/*if (cases[y + 1][x] == PLAYER) {
-						cases[y][x] = UNDERGROUND;
-						cases[y + 1][x] = ROCK;
-						System.out.println("Perdu");
-						defeat = true;
-					}*/
+					/*
+					 * if (cases[y + 1][x] == PLAYER) { cases[y][x] = UNDERGROUND; cases[y + 1][x] =
+					 * ROCK; System.out.println("Perdu"); defeat = true; }
+					 */
 				}
 			}
 		}
