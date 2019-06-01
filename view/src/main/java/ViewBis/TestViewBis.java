@@ -31,6 +31,7 @@ public class TestViewBis {
 					if (compo.monsterHere3()) {
 						compo.moveMonster3();
 					}
+					compo.playerBlocked();
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Q) {
 					compo.moveLeft();
@@ -44,6 +45,7 @@ public class TestViewBis {
 					if (compo.monsterHere3()) {
 						compo.moveMonster3();
 					}
+					compo.playerBlocked();
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Z) {
 					compo.moveUp();
@@ -57,6 +59,7 @@ public class TestViewBis {
 					if (compo.monsterHere3()) {
 						compo.moveMonster3();
 					}
+					compo.playerBlocked();
 				}
 				if (e.getKeyCode() == KeyEvent.VK_S) {
 					compo.moveDown();
@@ -70,6 +73,7 @@ public class TestViewBis {
 					if (compo.monsterHere3()) {
 						compo.moveMonster3();
 					}
+					compo.playerBlocked();
 				}
 			}
 			
@@ -87,6 +91,7 @@ public class TestViewBis {
 					if (compo.monsterHere3()) {
 						compo.moveMonster3();
 					}
+					compo.playerBlocked();
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Q) {
 					compo.moveLeft();
@@ -100,6 +105,7 @@ public class TestViewBis {
 					if (compo.monsterHere3()) {
 						compo.moveMonster3();
 					}
+					compo.playerBlocked();
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Z) {
 					compo.moveUp();
@@ -113,6 +119,7 @@ public class TestViewBis {
 					if (compo.monsterHere3()) {
 						compo.moveMonster3();
 					}
+					compo.playerBlocked();
 				}
 				if (e.getKeyCode() == KeyEvent.VK_S) {
 					compo.moveDown();
@@ -126,6 +133,7 @@ public class TestViewBis {
 					if (compo.monsterHere3()) {
 						compo.moveMonster3();
 					}
+					compo.playerBlocked();
 				}			
 			}
 

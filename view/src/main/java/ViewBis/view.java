@@ -395,6 +395,25 @@ public class view extends JPanel {
 			// setVisible(false);
 		}
 	}
+	
+	public void playerBlocked() {
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == PLAYER) {
+					if(cases[y+1][x] == WALL || cases[y+1][x] == ROCK) {
+						if(cases[y-1][x] == WALL || cases[y+1][x] == ROCK) {
+							if(cases[y][x+1] == WALL || cases[y+1][x] == ROCK) {
+								if(cases[y][x-1] == WALL ||cases[y+1][x] ==  ROCK) {
+									System.out.println("Perdu");
+									defeat = true;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 
 	public void moveRock() {
 		for (int y = 0; y < cases.length; y++) {
