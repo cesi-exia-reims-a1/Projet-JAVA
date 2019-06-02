@@ -1,6 +1,7 @@
 package main;
 
 import controller.Controller;
+import model.Map;
 import view.View;
 
 public abstract class Main {
@@ -16,9 +17,14 @@ public abstract class Main {
 
 		View view = new View();
 		Controller controller = new Controller();
+		Map map = new Map();
 
 		view.setController(controller);
 		controller.setView(view);
+		controller.setMap(map);
+
+		//showboard a besoin de map
+		view.setMap(map);
 
 		controller.loadMap();
 

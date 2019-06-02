@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import contract.IController;
+import contract.IMap;
 
 public class Showboard extends JPanel {
 	IController controller;
@@ -25,6 +26,7 @@ public class Showboard extends JPanel {
 	private BufferedImage image10;
 	private BufferedImage imageWin;
 	private BufferedImage imageLoose;
+	IMap map;
 
 	public Showboard() {
 		try {
@@ -55,7 +57,7 @@ public class Showboard extends JPanel {
 		} else if (controller.getDefeat()) {
 			g.drawImage(imageLoose, 0, 0, 1700, 2000, 10, 0, 400, 400, this);
 		} else {
-			int[][] cases = controller.getCases();
+			int[][] cases = map.getCases();
 			for (int y = 0; y < cases.length; y++) {
 				for (int x = 0; x < cases[y].length; x++) {
 					int dx1 = 0 + 50 * x;
@@ -93,4 +95,7 @@ public class Showboard extends JPanel {
 		this.controller = controller;
 	}
 
+	public void setMap(IMap map) {
+		this.map = map;
+	}
 }

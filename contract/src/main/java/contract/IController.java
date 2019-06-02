@@ -2,9 +2,9 @@ package contract;
 
 public interface IController {
 
-	public boolean getVictory();
+	//public boolean getVictory();
 
-	public boolean getDefeat();
+	//public boolean getDefeat();
 
 	public void moveRight();
 
@@ -14,6 +14,8 @@ public interface IController {
 
 	public void moveDown();
 
-	public int[][] getCases();
+	boolean getVictory();
+
+	boolean getDefeat();
 
 }

@@ -9,12 +9,13 @@ import java.util.Random;
 
 import contract.Constants;
 import contract.IController;
+import contract.IMap;
 import contract.IView;
 
 public class Controller implements IController {
 	IView view;
+	IMap map;
 	int nbDiamant = 0;
-	int[][] cases = new int[20][20];
 	boolean victory;
 	boolean defeat;
 	Random random = new Random();
@@ -152,6 +153,7 @@ public class Controller implements IController {
 	}
 
 	public Point findPlayer() {
+		int[][] cases = map.getCases();
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == Constants.PLAYER) {
@@ -163,6 +165,7 @@ public class Controller implements IController {
 	}
 
 	public boolean monsterHere() {
+		int[][] cases = map.getCases();
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == Constants.MONSTER) {
@@ -175,6 +178,7 @@ public class Controller implements IController {
 	}
 
 	public boolean monsterHere2() {
+		int[][] cases = map.getCases();
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == Constants.MONSTER2) {
@@ -187,6 +191,7 @@ public class Controller implements IController {
 	}
 
 	public boolean monsterHere3() {
+		int[][] cases = map.getCases();
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == Constants.MONSTER3) {
@@ -199,6 +204,7 @@ public class Controller implements IController {
 	}
 
 	public Point findMonster() {
+		int[][] cases = map.getCases();
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == Constants.MONSTER) {
@@ -211,6 +217,7 @@ public class Controller implements IController {
 	}
 
 	public Point findMonster2() {
+		int[][] cases = map.getCases();
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == Constants.MONSTER2) {
@@ -223,6 +230,7 @@ public class Controller implements IController {
 	}
 
 	public Point findMonster3() {
+		int[][] cases = map.getCases();
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == Constants.MONSTER3) {
@@ -235,6 +243,7 @@ public class Controller implements IController {
 	}
 
 	public void appliqueMovement(int x1, int y1, int x2, int y2) {
+		int[][] cases = map.getCases();
 		if (cases[y2][x2] == Constants.GROUND || cases[y2][x2] == Constants.UNDERGROUND) {
 			cases[y1][x1] = Constants.UNDERGROUND;
 			cases[y2][x2] = Constants.PLAYER;
@@ -280,6 +289,8 @@ public class Controller implements IController {
 	}
 
 	public void appliqueMovementMonster(int x1, int y1, int x2, int y2) {
+		int[][] cases = map.getCases();
+
 		if (cases[y2][x2] == Constants.UNDERGROUND) {
 			cases[y1][x1] = Constants.UNDERGROUND;
 			cases[y2][x2] = Constants.MONSTER;
@@ -294,6 +305,7 @@ public class Controller implements IController {
 	}
 
 	public void appliqueMovementMonster2(int x1, int y1, int x2, int y2) {
+		int[][] cases = map.getCases();
 		if (cases[y2][x2] == Constants.UNDERGROUND) {
 			cases[y1][x1] = Constants.UNDERGROUND;
 			cases[y2][x2] = Constants.MONSTER2;
@@ -308,6 +320,7 @@ public class Controller implements IController {
 	}
 
 	public void appliqueMovementMonster3(int x1, int y1, int x2, int y2) {
+		int[][] cases = map.getCases();
 		if (cases[y2][x2] == Constants.UNDERGROUND) {
 			cases[y1][x1] = Constants.UNDERGROUND;
 			cases[y2][x2] = Constants.MONSTER3;
@@ -322,6 +335,7 @@ public class Controller implements IController {
 	}
 
 	public void playerBlocked() {
+		int[][] cases = map.getCases();
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == Constants.PLAYER) {
@@ -338,6 +352,7 @@ public class Controller implements IController {
 	}
 
 	public void moveRock() {
+		int[][] cases = map.getCases();
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == Constants.ROCK) {
@@ -414,6 +429,8 @@ public class Controller implements IController {
 	}
 
 	public void loadMap() {
+		int[][] cases = new int[20][20];//le seul endroit ou tu créé les cases pour les donner a la map !
+		map.setCases(cases);
 		try {
 
 			// Class.forName("com.mysql.jdbc.Driver");
@@ -443,9 +460,8 @@ public class Controller implements IController {
 		this.view = view;
 	}
 
-	@Override
-	public int[][] getCases() {
-		return cases;
+	public void setMap(IMap map) {
+		this.map = map;
 	}
 
 }

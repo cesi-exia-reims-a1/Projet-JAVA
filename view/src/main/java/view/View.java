@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 import contract.IController;
+import contract.IMap;
 import contract.IView;
 
 public final class View extends JFrame implements IView {
@@ -55,6 +56,10 @@ public final class View extends JFrame implements IView {
 	@Override
 	public void redraw() {
 		repaint();
+	}
+
+	public void setMap(IMap map) {
+		showboard.setMap(map);
 	}
 
 }
