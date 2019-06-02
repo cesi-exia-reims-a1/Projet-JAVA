@@ -18,6 +18,9 @@ public class Controller implements IController {
 	int nbDiamant = 0;
 	boolean victory;
 	boolean defeat;
+	boolean here;
+	boolean here2;
+	boolean here3;
 	Random random = new Random();
 
 	@Override
@@ -29,6 +32,18 @@ public class Controller implements IController {
 	public boolean getDefeat() {
 		return defeat;
 	}
+	
+	public boolean getHere() {
+        return here;
+    }
+
+    public boolean getHere2() {
+        return here2;
+    }
+
+    public boolean getHere3() {
+        return here3;
+    }
 
 	public Controller() {
 
@@ -36,13 +51,13 @@ public class Controller implements IController {
 
 	public void gereAutresTrucs() {
 		moveRock();
-		if (monsterHere()) {
+		if (here = true) {
 			moveMonster();
 		}
-		if (monsterHere2()) {
+		if (here2 = true) {
 			moveMonster2();
 		}
-		if (monsterHere3()) {
+		if (here3 = true) {
 			moveMonster3();
 		}
 		playerBlocked();
@@ -164,50 +179,12 @@ public class Controller implements IController {
 		throw new RuntimeException("impossible");
 	}
 
-	public boolean monsterHere() {
-		int[][] cases = map.getCases();
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == Constants.MONSTER) {
-					return true;
-				}
-
-			}
-		}
-		return false;
-	}
-
-	public boolean monsterHere2() {
-		int[][] cases = map.getCases();
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == Constants.MONSTER2) {
-					return true;
-				}
-
-			}
-		}
-		return false;
-	}
-
-	public boolean monsterHere3() {
-		int[][] cases = map.getCases();
-		for (int y = 0; y < cases.length; y++) {
-			for (int x = 0; x < cases[y].length; x++) {
-				if (cases[y][x] == Constants.MONSTER3) {
-					return true;
-				}
-
-			}
-		}
-		return false;
-	}
-
 	public Point findMonster() {
 		int[][] cases = map.getCases();
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == Constants.MONSTER) {
+					here = true;
 					return new Point(x, y);
 				}
 			}
@@ -221,6 +198,7 @@ public class Controller implements IController {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == Constants.MONSTER2) {
+					here2 = true;
 					return new Point(x, y);
 				}
 			}
@@ -234,6 +212,7 @@ public class Controller implements IController {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == Constants.MONSTER3) {
+					here3 = true;
 					return new Point(x, y);
 				}
 			}
