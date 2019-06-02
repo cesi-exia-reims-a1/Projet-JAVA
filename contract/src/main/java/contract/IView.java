@@ -1,10 +1,7 @@
 package contract;
 
-import entity.Map;
-
 public interface IView {
 
-	void printMessage(final String message);
+	void redraw();
 
-	void afficheCarte(Map map);
 }

@@ -1,22 +1,19 @@
 package contract;
 
-/**
- * The Interface IController.
- *
- * @author Jean-Aymeric Diet
- */
 public interface IController {
 
-	/**
-	 * Control.
-	 */
-	public void control();
+	public boolean getVictory();
 
-	/**
-	 * Order perform.
-	 *
-	 * @param controllerOrder
-	 *          the controller order
-	 */
-	public void orderPerform(ControllerOrder controllerOrder);
+	public boolean getDefeat();
+
+	public void moveRight();
+
+	public void moveLeft();
+
+	public void moveUp();
+
+	public void moveDown();
+
+	public int[][] getCases();
+
 }

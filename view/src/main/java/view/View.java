@@ -1,55 +1,60 @@
 package view;
 
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-import javax.swing.SwingUtilities;
+import javax.swing.JFrame;
 
-import contract.ControllerOrder;
 import contract.IController;
-import contract.IModel;
 import contract.IView;
-import entity.Map;
 
-public final class View implements IView, Runnable {
+public final class View extends JFrame implements IView {
+	IController controller;
+	private Showboard showboard;
 
-	private final ViewFrame viewFrame;
+	public View() {
+		setSize(1020, 1050);
+		showboard = new Showboard();
+		showboard.setSize(100, 100);
+		add(showboard);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		addKeyListener(new KeyListener() {
 
-	public View(final IModel model) {
-		this.viewFrame = new ViewFrame(model);
-		SwingUtilities.invokeLater(this);
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_D) {
+					controller.moveRight();
+				}
+				if (e.getKeyCode() == KeyEvent.VK_Q) {
+					controller.moveLeft();
+				}
+				if (e.getKeyCode() == KeyEvent.VK_Z) {
+					controller.moveUp();
+				}
+				if (e.getKeyCode() == KeyEvent.VK_S) {
+					controller.moveDown();
+				}
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+			}
+		});
 	}
 
-	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
-		switch (keyCode) {
-		case KeyEvent.VK_Z:
-			return ControllerOrder.UP;
-		case KeyEvent.VK_S:
-			return ControllerOrder.DOWN;
-		case KeyEvent.VK_Q:
-			return ControllerOrder.LEFT;
-		case KeyEvent.VK_D:
-			return ControllerOrder.RIGHT;
-		default:
-			return ControllerOrder.Nothing;
-		}
+	public void setController(IController controller) {
+		this.controller = controller;
+		showboard.setController(controller);
 	}
 
 	@Override
-	public void printMessage(final String message) {
-		this.viewFrame.printMessage(message);
+	public void redraw() {
+		repaint();
 	}
 
-	@Override
-	public void run() {
-		this.viewFrame.setVisible(true);
-	}
-
-	public void setController(final IController controller) {
-		this.viewFrame.setController(controller);
-	}
-
-	@Override
-	public void afficheCarte(Map map) {
-		this.viewFrame.afficheCarte(map);
-	}
 }

@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 
 public class view extends JPanel {
 
+	private static final long serialVersionUID = 1L;
 	private static final int WALL = 1;
 	private static final int GROUND = 2;
 	private static final int UNDERGROUND = 3;
@@ -406,12 +407,15 @@ public class view extends JPanel {
 			// setVisible(false);
 		}
 	}
-	
+
 	public void playerBlocked() {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == PLAYER) {
-					if((cases[y+1][x] == WALL || cases[y+1][x] == ROCK) && (cases[y-1][x] == WALL || cases[y-1][x] == ROCK) && (cases[y][x+1] == WALL || cases[y][x+1] == ROCK) && (cases[y][x-1] == WALL || cases[y][x-1] == ROCK) ) {
+					if ((cases[y + 1][x] == WALL || cases[y + 1][x] == ROCK)
+							&& (cases[y - 1][x] == WALL || cases[y - 1][x] == ROCK)
+							&& (cases[y][x + 1] == WALL || cases[y][x + 1] == ROCK)
+							&& (cases[y][x - 1] == WALL || cases[y][x - 1] == ROCK)) {
 						System.out.println("Perdu");
 						defeat = true;
 					}
