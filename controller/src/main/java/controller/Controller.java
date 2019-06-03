@@ -15,7 +15,7 @@ import contract.IView;
 public class Controller implements IController {
 	IView view;
 	IMap map;
-	int nbDiamant = 0;
+	int nbDiamond = 0;
 	boolean victory;
 	boolean defeat;
 	Random random = new Random();
@@ -109,7 +109,7 @@ public class Controller implements IController {
 
 	}
 
-//with this function, monster 2 can moove on the right
+	//with this function, monster 2 can moove on the right
 	public void moveMonsterRight2() {
 
 		Point positionMonster2 = findMonster2();
@@ -271,7 +271,7 @@ public class Controller implements IController {
 			cases[y2][x2] = Constants.PLAYER;
 		}
 		// This function can open the exit
-		if (nbDiamant >= 5) {
+		if (nbDiamond >= 5) {
 			if (cases[y2][x2] == Constants.ESCAPE) {
 				cases[y1][x1] = Constants.UNDERGROUND;
 				cases[y2][x2] = Constants.PLAYER;
@@ -287,8 +287,8 @@ public class Controller implements IController {
 		if (cases[y2][x2] == Constants.DIAMOND) {
 			cases[y1][x1] = Constants.UNDERGROUND;
 			cases[y2][x2] = Constants.PLAYER;
-			nbDiamant++;
-			System.out.println("DIAMANT " + nbDiamant);
+			nbDiamond++;
+			System.out.println("Diamond " + nbDiamond);
 		}
 		// this function said that the player dead if he touch the monster 1
 		if (cases[y2][x2] == Constants.MONSTER) {
@@ -473,7 +473,7 @@ public class Controller implements IController {
 			System.out.println("Effective connection!");
 
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM map1");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM map3");
 
 			while (rs.next()) {
 				cases[rs.getInt("x")][rs.getInt("y")] = rs.getInt("id");
