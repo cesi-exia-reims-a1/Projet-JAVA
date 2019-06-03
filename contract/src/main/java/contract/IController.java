@@ -1,5 +1,6 @@
 package contract;
 
+//this is declarations of function use by the controller
 public interface IController {
 
 	public void moveRight();

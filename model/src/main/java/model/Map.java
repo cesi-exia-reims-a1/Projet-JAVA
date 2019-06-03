@@ -2,6 +2,7 @@ package model;
 
 import contract.IMap;
 
+//This is the implement of our map
 public class Map implements IMap {
 	int[][] cases = new int[20][20];
 

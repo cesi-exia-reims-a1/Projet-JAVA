@@ -4,6 +4,7 @@ import controller.Controller;
 import model.Map;
 import view.View;
 
+//this is our main class
 public abstract class Main {
 
 	public static void main(final String[] args) {

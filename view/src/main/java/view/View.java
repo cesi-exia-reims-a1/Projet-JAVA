@@ -9,6 +9,7 @@ import contract.IController;
 import contract.IMap;
 import contract.IView;
 
+//This is the implement of our control recovery
 public final class View extends JFrame implements IView {
 	IController controller;
 	private Showboard showboard;

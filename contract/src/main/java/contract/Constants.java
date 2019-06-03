@@ -1,5 +1,6 @@
 package contract;
 
+//this is the declaration of values use for load some of sprite
 public class Constants {
 	public static final int WALL = 1;
 	public static final int GROUND = 2;

@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import contract.IController;
 import contract.IMap;
 
+//this is the implement of our graphic window
 public class Showboard extends JPanel {
 	IController controller;
 	private BufferedImage image;
