@@ -18,9 +18,6 @@ public class Controller implements IController {
 	int nbDiamant = 0;
 	boolean victory;
 	boolean defeat;
-	boolean here;
-	boolean here2;
-	boolean here3;
 	Random random = new Random();
 
 	@Override
@@ -32,18 +29,6 @@ public class Controller implements IController {
 	public boolean getDefeat() {
 		return defeat;
 	}
-	
-	public boolean getHere() {
-        return here;
-    }
-
-    public boolean getHere2() {
-        return here2;
-    }
-
-    public boolean getHere3() {
-        return here3;
-    }
 
 	public Controller() {
 
@@ -51,13 +36,13 @@ public class Controller implements IController {
 
 	public void gereAutresTrucs() {
 		moveRock();
-		if (here = true) {
+		if (monsterHere()) {
 			moveMonster();
 		}
-		if (here2 = true) {
+		if (monsterHere2()) {
 			moveMonster2();
 		}
-		if (here3 = true) {
+		if (monsterHere3()) {
 			moveMonster3();
 		}
 		playerBlocked();
@@ -184,13 +169,47 @@ public class Controller implements IController {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == Constants.MONSTER) {
-					here = true;
 					return new Point(x, y);
 				}
 			}
 		}
-
 		throw new RuntimeException("impossible");
+	}
+	
+	public boolean monsterHere() {
+		int[][] cases = map.getCases();
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == Constants.MONSTER) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public boolean monsterHere2() {
+		int[][] cases = map.getCases();
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == Constants.MONSTER2) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public boolean monsterHere3() {
+		int[][] cases = map.getCases();
+		for (int y = 0; y < cases.length; y++) {
+			for (int x = 0; x < cases[y].length; x++) {
+				if (cases[y][x] == Constants.MONSTER3) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	public Point findMonster2() {
@@ -198,12 +217,10 @@ public class Controller implements IController {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == Constants.MONSTER2) {
-					here2 = true;
 					return new Point(x, y);
 				}
 			}
 		}
-
 		throw new RuntimeException("impossible");
 	}
 
@@ -212,12 +229,10 @@ public class Controller implements IController {
 		for (int y = 0; y < cases.length; y++) {
 			for (int x = 0; x < cases[y].length; x++) {
 				if (cases[y][x] == Constants.MONSTER3) {
-					here3 = true;
 					return new Point(x, y);
 				}
 			}
 		}
-
 		throw new RuntimeException("impossible");
 	}
 
@@ -423,7 +438,7 @@ public class Controller implements IController {
 			System.out.println("Connexion effective !");
 
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM map5");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM map3");
 
 			while (rs.next()) {
 				cases[rs.getInt("x")][rs.getInt("y")] = rs.getInt("id");
