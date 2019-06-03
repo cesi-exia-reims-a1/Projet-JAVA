@@ -62,8 +62,6 @@ public class Showboard extends JPanel {
 				for (int x = 0; x < cases[y].length; x++) {
 					int dx1 = 0 + 50 * x;
 					int dy1 = 0 + 50 * y;
-					// System.out.println(dx1 + "," + dy1);
-
 					Image monImageADraw = image;
 					if (cases[y][x] == 2)
 						monImageADraw = image1;

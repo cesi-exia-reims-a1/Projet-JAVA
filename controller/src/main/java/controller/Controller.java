@@ -29,12 +29,12 @@ public class Controller implements IController {
 	public boolean getDefeat() {
 		return defeat;
 	}
-	
+
 	public Controller() {
 
 	}
 
-	public void gereAutresTrucs() {
+	public void othersThings() {
 		moveRock();
 		if (monsterHere()) {
 			moveMonster();
@@ -53,28 +53,28 @@ public class Controller implements IController {
 
 		Point positionJoueur = findPlayer();
 		appliqueMovement(positionJoueur.x, positionJoueur.y, positionJoueur.x + 1, positionJoueur.y);
-		gereAutresTrucs();
+		othersThings();
 	}
 
 	@Override
 	public void moveLeft() {
 		Point positionJoueur = findPlayer();
 		appliqueMovement(positionJoueur.x, positionJoueur.y, positionJoueur.x - 1, positionJoueur.y);
-		gereAutresTrucs();
+		othersThings();
 	}
 
 	@Override
 	public void moveUp() {
 		Point positionJoueur = findPlayer();
 		appliqueMovement(positionJoueur.x, positionJoueur.y, positionJoueur.x, positionJoueur.y - 1);
-		gereAutresTrucs();
+		othersThings();
 	}
 
 	@Override
 	public void moveDown() {
 		Point positionJoueur = findPlayer();
 		appliqueMovement(positionJoueur.x, positionJoueur.y, positionJoueur.x, positionJoueur.y + 1);
-		gereAutresTrucs();
+		othersThings();
 	}
 
 	public void moveMonsterRight() {
@@ -163,7 +163,7 @@ public class Controller implements IController {
 		}
 		throw new RuntimeException("impossible");
 	}
-	
+
 	public boolean monsterHere() {
 		int[][] cases = map.getCases();
 		for (int y = 0; y < cases.length; y++) {
@@ -246,7 +246,7 @@ public class Controller implements IController {
 			if (cases[y2][x2] == Constants.ESCAPE) {
 				cases[y1][x1] = Constants.UNDERGROUND;
 				cases[y2][x2] = Constants.PLAYER;
-				System.out.println("VICTOIRE");
+				System.out.println("Victory");
 				victory = true;
 			} else if (cases[y2][x2] == Constants.ESCAPE) {
 				cases[y1][x1] = Constants.PLAYER;
@@ -264,19 +264,19 @@ public class Controller implements IController {
 		if (cases[y2][x2] == Constants.MONSTER) {
 			cases[y1][x1] = Constants.UNDERGROUND;
 			cases[y2][x2] = Constants.PLAYER;
-			System.out.println("Perdu");
+			System.out.println("Loose");
 			defeat = true;
 		}
 		if (cases[y2][x2] == Constants.MONSTER2) {
 			cases[y1][x1] = Constants.UNDERGROUND;
 			cases[y2][x2] = Constants.PLAYER;
-			System.out.println("Perdu");
+			System.out.println("Loose");
 			defeat = true;
 		}
 		if (cases[y2][x2] == Constants.MONSTER3) {
 			cases[y1][x1] = Constants.UNDERGROUND;
 			cases[y2][x2] = Constants.PLAYER;
-			System.out.println("Perdu");
+			System.out.println("Loose");
 			defeat = true;
 		}
 		view.redraw();
@@ -292,9 +292,8 @@ public class Controller implements IController {
 		if (cases[y2][x2] == Constants.PLAYER) {
 			cases[y1][x1] = Constants.UNDERGROUND;
 			cases[y2][x2] = Constants.MONSTER;
-			System.out.println("Perdu");
+			System.out.println("Loose");
 			defeat = true;
-			// setVisible(false);
 		}
 	}
 
@@ -307,9 +306,8 @@ public class Controller implements IController {
 		if (cases[y2][x2] == Constants.PLAYER) {
 			cases[y1][x1] = Constants.UNDERGROUND;
 			cases[y2][x2] = Constants.MONSTER2;
-			System.out.println("Perdu");
+			System.out.println("Loose");
 			defeat = true;
-			// setVisible(false);
 		}
 	}
 
@@ -322,9 +320,8 @@ public class Controller implements IController {
 		if (cases[y2][x2] == Constants.PLAYER) {
 			cases[y1][x1] = Constants.UNDERGROUND;
 			cases[y2][x2] = Constants.MONSTER3;
-			System.out.println("Perdu");
+			System.out.println("Loose");
 			defeat = true;
-			// setVisible(false);
 		}
 	}
 
@@ -337,7 +334,7 @@ public class Controller implements IController {
 							&& (cases[y - 1][x] == Constants.WALL || cases[y - 1][x] == Constants.ROCK)
 							&& (cases[y][x + 1] == Constants.WALL || cases[y][x + 1] == Constants.ROCK)
 							&& (cases[y][x - 1] == Constants.WALL || cases[y][x - 1] == Constants.ROCK)) {
-						System.out.println("Perdu");
+						System.out.println("Loose");
 						defeat = true;
 					}
 				}
@@ -354,10 +351,6 @@ public class Controller implements IController {
 						cases[y][x] = Constants.UNDERGROUND;
 						cases[y + 1][x] = Constants.ROCK;
 					}
-					/*
-					 * if (cases[y + 1][x] == PLAYER) { cases[y][x] = UNDERGROUND; cases[y + 1][x] =
-					 * ROCK; System.out.println("Perdu"); defeat = true; }
-					 */
 				}
 			}
 		}
@@ -435,15 +428,13 @@ public class Controller implements IController {
 			String passwd = "";
 
 			Connection conn = DriverManager.getConnection(url, user, passwd);
-			System.out.println("Connexion effective !");
+			System.out.println("Effective connection!");
 
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM map1");
 
 			while (rs.next()) {
 				cases[rs.getInt("x")][rs.getInt("y")] = rs.getInt("id");
-				// System.out.println(rs.getInt("x") + " " + rs.getInt("y") + " " +
-				// rs.getInt("id"));
 			}
 		} catch (Exception e) {
 			throw new RuntimeException(e);

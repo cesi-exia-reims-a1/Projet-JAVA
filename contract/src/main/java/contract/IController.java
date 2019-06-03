@@ -2,10 +2,6 @@ package contract;
 
 public interface IController {
 
-	//public boolean getVictory();
-
-	//public boolean getDefeat();
-
 	public void moveRight();
 
 	public void moveLeft();
