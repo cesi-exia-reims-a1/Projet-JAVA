@@ -1,10 +1,12 @@
 package controller;
 
 import java.awt.Point;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.Random;
 
 import contract.Constants;
@@ -471,9 +473,10 @@ public class Controller implements IController {
 
 			Connection conn = DriverManager.getConnection(url, user, passwd);
 			System.out.println("Effective connection!");
-
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM map3");
+			conn.setAutoCommit(false);
+			CallableStatement proc = conn.prepareCall("{call Map2}");
+			proc.execute();
+			ResultSet rs = (ResultSet) proc.executeQuery();
 
 			while (rs.next()) {
 				cases[rs.getInt("x")][rs.getInt("y")] = rs.getInt("id");
