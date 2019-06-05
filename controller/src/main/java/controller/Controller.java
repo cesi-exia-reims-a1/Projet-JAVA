@@ -271,10 +271,6 @@ public class Controller implements IController {
 		if (cases[y2][x2] == Constants.GROUND || cases[y2][x2] == Constants.UNDERGROUND) {
 			cases[y1][x1] = Constants.UNDERGROUND;
 			cases[y2][x2] = Constants.PLAYER;
-			if((cases[y2-2][x2] == Constants.ROCK) && (cases[y2-1][x2] == Constants.UNDERGROUND)) {
-				System.out.println("Loose");
-				defeat = true;
-			}
 		}
 		// This function can open the exit
 		if (nbDiamond >= 5) {
